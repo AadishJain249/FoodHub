@@ -1,0 +1,10 @@
+1. create react app uses webpack
+2.package lock json locks the file , dont put it into git ignore 
+  mentions the exact version 
+  contains integrity which has hash contains the excat version
+  version
+  2.0.0 major.minor.patch
+  ^ minor patch update
+  ~ patch only
+3. node modules data base for module and we can put it in GitIgnore 
+4. HMR Hot Module Relod automatically changes and refreshing  
