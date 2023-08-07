@@ -1,6 +1,7 @@
 import RestaurantCard from "../component/ResturantCard";
 import Shimmer from "../../Shimmer";
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 export const Body = () => {
   const swiggy_url =
     "https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.7040592&lng=77.10249019999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING";
@@ -29,9 +30,7 @@ export const Body = () => {
       setError("");
     }
   }
-  // console.log("render");
   useEffect(() => {
-    // console.log("useEffect");
     getData();
   }, []);
   async function getData() {
@@ -48,7 +47,6 @@ export const Body = () => {
       }
     }
     const data = await checkJsonData(json);
-    console.log(data);
     setResturant(data);
     setSearch(data);
   }
@@ -85,7 +83,11 @@ export const Body = () => {
       ) : (
         <div className="restaurant-list">
           {search.map((res) => {
-            return <RestaurantCard key={res?.info?.id} {...res.info} />;
+            return (
+            <Link className="link-styles" to={"/resturant/"+res?.info?.id}>
+            <RestaurantCard key={res?.info?.id} {...res.info} />
+            </Link>
+            )
           })}
         </div>
       )}

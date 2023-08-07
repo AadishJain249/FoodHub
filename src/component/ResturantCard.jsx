@@ -1,35 +1,33 @@
-export const Img_Link="https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/"
-const RestaurantCard = ({
-  cloudinaryImageId,
-  name,
-  cuisines,
-  areaName,
-  sla,
-  costForTwo,
-  avgRatingString,
-}) => {
+import  {Img_Link} from "../../content";
+import {AiFillStar}  from "react-icons/ai";
+const RestaurantCard = (props) => {
+  const buttonStyle = {
+    backgroundColor:
+      props.avgRating == "--"
+        ? "#fff"
+        : parseFloat(props.avgRating) < 4.0
+        ? "#db7c38"
+        : "#48c479",
+    color: isNaN(props.avgRating) ? "#535665" : "#fff",
+  };
+
   return (
     <div className="card">
-      <img src={Img_Link + cloudinaryImageId} />
-      <h3>{name}</h3>
-      <h5>{cuisines.join(", ")}</h5>
-      <h5>{areaName}</h5>
-      <span>
-        <h4
-          style={
-            avgRatingString < 4
-              ? { backgroundColor: "var(--light-red)" }
-              : avgRatingString === "--"
-              ? { backgroundColor: "white", color: "black" }
-              : { color: "white" }
-          }
-        >
-          <i className="fa-solid fa-star"></i>
-          {avgRatingString}
-        </h4>
-        <h4>{sla?.lastMileTravelString ?? "2.0 km"}</h4>
-        <h4>{costForTwo ?? "₹200 for two"}</h4>
-      </span>
+      <img className="card-img" src={Img_Link + props.cloudinaryImageId} alt={name} />
+      <div className="card-body">
+        <h6 className="card-title">{props.name}</h6>
+        <p className="card-tags">{props.cuisines.join(", ")}</p>
+        <div className="card-details">
+          <div className="rating" style={buttonStyle}>
+            <AiFillStar />
+            <span>{props.avgRating}</span>
+          </div>
+          <div>•</div>
+          <div>{props.sla?.lastMileTravelString }</div>
+          <div>•</div>
+          <div>{props.costForTwo}</div>
+        </div>
+      </div>
     </div>
   );
 };

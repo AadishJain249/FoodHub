@@ -6,6 +6,7 @@ import { Button } from "@mui/material";
 import LoginIcon from "@mui/icons-material/Login";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 export const ImgComponent = ({ item, itemname }) => {
   return (
@@ -21,20 +22,27 @@ export const Title = () => {
 };
 
 export const NavComponent = () => {
+  const theme={
+    width:'50px',
+    height:'50px'
+  }
   return (
     <div className="nav-items">
       <ul>
         <li>
           {" "}
-          <ImgComponent item={home} itemname={"home"} />{" "}
+          <Link to="/about"> <img style={theme}src={home}></img></Link>
+          
         </li>
         <li>
           {" "}
-          <ImgComponent item={cart} itemname={"cart"} />{" "}
+          <Link to="/"><img style={theme}src={cart}/></Link>
+
         </li>
         <li>
           {" "}
-          <ImgComponent item={profile} itemname={"profile"} />{" "}
+          <Link to="/"><img style={theme}src={profile}/></Link>
+
         </li>
       </ul>
     </div>
@@ -51,15 +59,13 @@ export const Header = () => {
     fontWeight: "bolder",
   };
   const [logged, Islogged] = useState(false);
-  console.log("render");
   useEffect(() => {
-    console.log("useEffect");
   }, []);
   return (
     <div className="header">
       <Title />
       <NavComponent />
-      {logged ? (
+      {/* {logged ? (
         <Button
           style={themeStyle}
           variant="outlined"
@@ -77,7 +83,7 @@ export const Header = () => {
         >
           Logout
         </Button>
-      )}
+      )} */}
     </div>
   );
 };
