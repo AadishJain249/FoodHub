@@ -3,8 +3,10 @@ import cart from "../../images/cart.png";
 import profile from "../../images/profile.png";
 import home from "../../images/home.png";
 import { Button } from "@mui/material";
-import LoginIcon from "@mui/icons-material/Login";
-import LogoutIcon from "@mui/icons-material/Logout";
+import { useContext } from "react";
+import userContext from "./utils/useContext";
+// import LoginIcon from "@mui/icons-material/Login";
+// import LogoutIcon from "@mui/icons-material/Logout";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -26,6 +28,7 @@ export const NavComponent = () => {
     width:'50px',
     height:'50px'
   }
+  
   return (
     <div className="nav-items">
       <ul>
@@ -44,6 +47,11 @@ export const NavComponent = () => {
           <Link to="/"><img style={theme}src={profile}/></Link>
 
         </li>
+        <li>
+          {" "}
+          <Link to="/insta"><img style={theme}src={profile}/></Link>
+
+        </li>
       </ul>
     </div>
   );
@@ -58,6 +66,7 @@ export const Header = () => {
     color: "black",
     fontWeight: "bolder",
   };
+  
   const [logged, Islogged] = useState(false);
   useEffect(() => {
   }, []);

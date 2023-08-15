@@ -3,13 +3,6 @@ import "./ResturantSubMenu.css";
 import { Img_Link } from "../../../content";
 import { FaRegStopCircle, FaRegCaretSquareUp } from "react-icons/fa";
 function ResturantSubMenu(props) {
-  const theme = {
-    backgroundColor:
-      props.info.itemAttribute.vegClassifier === "NONVEG"
-        ? "red"
-        : "lightgreen",
-  };
-  console.log(theme);
   return (
     <div className="restaurant1-menu">
       <div className="restaurant1-summary">

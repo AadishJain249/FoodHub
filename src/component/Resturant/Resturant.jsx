@@ -4,21 +4,10 @@ import { useParams } from "react-router-dom";
 import { AiFillStar } from "react-icons/ai";
 import "./Resturant.css";
 import ResturantMenu from "./ResturantMenu.jsx";
+import useResturant from "../utils/useResturant";
 function Resturant() {
-  const param = useParams();
-  const id = param.id;
-  const [restaurant, setResturant] = useState([]);
-  const [menu, setMenu] = useState([]);
-  useEffect(() => {
-    getInfo();
-  }, []);
-  async function getInfo() {
-    const response = await fetch(swiggy_url + id);
-    const res_data = await response.json();
-    setResturant(res_data.data.cards[0].card.card.info);
-    setMenu(res_data.data.cards[2].groupedCard.cardGroupMap.REGULAR);
-  }
-
+  const {id} = useParams();
+  const {restaurant,menu}=useResturant(id)
   let rating = restaurant.totalRatings;
   let check = restaurant.totalRatings;
   if (rating > 999) {

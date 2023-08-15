@@ -1,0 +1,27 @@
+.noNet
+{
+  width: 100%;
+  min-height: 100vh;
+  background-color:#000000;
+  background-image:linear-gradient(315deg, #000000 0%, #7f8c8d 74%); 
+}
+.title
+{ 
+  font-size:70px;
+  font-weight: 600;
+  background-image: linear-gradient(to left, #553c9a, #b393d3);
+  text-align: center;
+  color: #b393d3;
+  background-clip: text;
+  text-shadow: 0 0 3px #FF0000, 0 0 5px #0000FF;
+  padding-top: 30px;
+  -webkit-background-clip: text;
+  
+}
+.net
+{
+  height:500px;
+  width: 500px;
+  margin: auto;
+  left: 50%;
+}

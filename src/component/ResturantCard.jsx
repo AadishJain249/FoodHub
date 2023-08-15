@@ -10,7 +10,6 @@ const RestaurantCard = (props) => {
         : "#48c479",
     color: isNaN(props.avgRating) ? "#535665" : "#fff",
   };
-
   return (
     <div className="card">
       <img className="card-img" src={Img_Link + props.cloudinaryImageId} alt={name} />
@@ -31,5 +30,4 @@ const RestaurantCard = (props) => {
     </div>
   );
 };
-
 export default RestaurantCard;
