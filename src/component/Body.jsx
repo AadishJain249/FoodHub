@@ -8,7 +8,6 @@ import Connection from "../component/Connection/Connection.jsx";
 // import userContext from "../component/utils/useContext"
 export const Body = () => {
   // const user=useContext(userContext)
-  // console.log(user);
   const swiggy_url =
     "https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.7040592&lng=77.10249019999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING";
   const [text, setText] = useState("");
@@ -23,6 +22,7 @@ export const Body = () => {
       setError("No matches restaurant found");
     } else if (text !== " ") {
       setSearch(res);
+      console.log(search);
       setError("");
     } else {
       setSearch(restaurant);
@@ -103,7 +103,7 @@ export const Body = () => {
           {search.map((res) => {
             return (
               <Link className="link-styles" to={"/resturant/" + res?.info?.id}>
-                <RestaurantCard key={res?.info?.id} {...res.info} />
+                <RestaurantCard key="{res?.info?.id}" {...res?.info} />
               </Link>
             );
           })}

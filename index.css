@@ -4,12 +4,6 @@
   box-sizing: border-box;
   font-family: "PT Sans", Calibri, Tahoma, sans-serif;
 }
-body,
-html {
-  width: 100vw;
-  min-width: 100vw;
-  max-width: 100vw;
-}
 .bg-success {
   background-color: #6dad1f;
 }
@@ -227,6 +221,7 @@ h6
   background: #ffc300;
   color: #001d3d;
   text-align: center;
+  position: fixed;
 }
 .footer-text {
   text-align: center;
@@ -251,5 +246,9 @@ h6
   .search-btn {
     flex-basis: 50px;
     font-size: 12px;
+  }
+  .footer-div
+  {
+    margin-top: 80px;
   }
 }

@@ -1,7 +1,7 @@
 import React, { lazy, Suspense, useState, useContext } from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import { Header } from "./src/component/Header.Jsx";
+import { Header } from "./src/component/Header.jsx";
 import { Body } from "./src/component/Body.jsx";
 import About from "./src/component/About.jsx";
 import { Footer } from "./src/component/Footer.jsx";
@@ -9,8 +9,11 @@ import Error from "./src/component/Error/Error.jsx";
 import { RouterProvider, createBrowserRouter, Outlet } from "react-router-dom";
 import Contact from "./src/component/Contact";
 import Shimmer from "./Shimmer";
-import Resturant from "./src/component/Resturant/Resturant";
-import userContext from "./src/component/utils/useContext";
+import Resturant from "./src/component/Resturant/Resturant.jsx";
+import userContext from "./src/component/utils/useContext.jsx";
+import { Provider } from "react-redux";
+import store from "./src/component/utils/store"
+import CartItem from "./src/component/CartItem/CartItem.jsx";
 // now we have d2 files insta mart and my bundle file
 // import Resturant from "./src/component/Resturant/Resturant";
 // imagine if there are 1000 of components in our app
@@ -33,6 +36,7 @@ const AppLayout = () => {
   });
   return (
     <>
+      <Provider store={store}>
       <userContext.Provider
         value={{
           user: user,
@@ -46,6 +50,7 @@ const AppLayout = () => {
         <Outlet> </Outlet>
         <Footer></Footer>
       </userContext.Provider>
+      </Provider>
     </>
   );
 };
@@ -82,6 +87,11 @@ const appRouter = createBrowserRouter([
             <InstaMart></InstaMart>
           </Suspense>
         ),
+      },
+      {
+        path: "/cartItems",
+        element: <CartItem></CartItem>, // i want my about page to have footer and header also we can make by making
+        // its children
       },
     ],
   },

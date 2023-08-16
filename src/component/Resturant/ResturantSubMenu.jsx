@@ -2,7 +2,19 @@ import React from "react";
 import "./ResturantSubMenu.css";
 import { Img_Link } from "../../../content";
 import { FaRegStopCircle, FaRegCaretSquareUp } from "react-icons/fa";
+import { useDispatch } from "react-redux";
+import { addItem } from "../utils/cartSlice";
 function ResturantSubMenu(props) {
+  const dispatch = useDispatch();
+  const addItemInCart = (item) => {
+    dispatch(addItem(item));
+  };
+  const themeStyle = {
+    width: "100px",
+    background: "#FFC300",
+    color: "black",
+    fontWeight: "bolder",
+  };
   return (
     <div className="restaurant1-menu">
       <div className="restaurant1-summary">
@@ -25,6 +37,7 @@ function ResturantSubMenu(props) {
                 <FaRegStopCircle className="veg" size="1.25rem" />
               )}
             </p>
+            <button style={themeStyle}onClick={() => addItemInCart(props.info)}>Add To Cart</button>
           </div>
         </div>
       </div>

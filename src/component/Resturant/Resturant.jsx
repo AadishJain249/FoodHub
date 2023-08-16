@@ -5,6 +5,7 @@ import { AiFillStar } from "react-icons/ai";
 import "./Resturant.css";
 import ResturantMenu from "./ResturantMenu.jsx";
 import useResturant from "../utils/useResturant";
+import Shimmer from "../../../Shimmer";
 function Resturant() {
   const {id} = useParams();
   const {restaurant,menu}=useResturant(id)
@@ -45,11 +46,10 @@ function Resturant() {
         </div>
         <h2 className="available">Available Items</h2>
         <div className="menu">
-        {menu &&
-          menu.cards &&
+        {menu.length===0?(<Shimmer></Shimmer>):
           menu.cards.map((e, index) => {
             if (index >= 1 && index <= menu.cards.length - 3) {
-              return <ResturantMenu {...e.card.card}></ResturantMenu>;
+              return <ResturantMenu key={index}{...e.card.card}></ResturantMenu>;
             }
           })}
           </div>
