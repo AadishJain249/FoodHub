@@ -35,6 +35,7 @@ export const Body = () => {
   async function getData() {
     const response = await fetch(swiggy_url);
     const json = await response.json();
+    console.log(json);
     async function checkJsonData(jsonData) {
       for (let i = 0; i < jsonData?.data?.cards.length; i++) {
         let checkData =
@@ -103,7 +104,7 @@ export const Body = () => {
           {search.map((res) => {
             return (
               <Link className="link-styles" to={"/resturant/" + res?.info?.id}>
-                <RestaurantCard key="{res?.info?.id}" {...res?.info} />
+                <RestaurantCard key={res?.info?.id} {...res.info} />
               </Link>
             );
           })}
