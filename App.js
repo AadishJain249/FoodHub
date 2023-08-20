@@ -1,7 +1,7 @@
 import React, { lazy, Suspense, useState, useContext } from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import { Header } from "./src/component/Header.jsx";
+import Header from "./src/component/Header.js";
 import { Body } from "./src/component/Body.jsx";
 import About from "./src/component/About.jsx";
 import { Footer } from "./src/component/Footer.jsx";
@@ -35,7 +35,7 @@ const AppLayout = () => {
     email: "aadi@gmail.com",
   });
   return (
-    <>
+    <React.Fragment>
       <Provider store={store}>
       <userContext.Provider
         value={{
@@ -51,7 +51,7 @@ const AppLayout = () => {
         <Footer></Footer>
       </userContext.Provider>
       </Provider>
-    </>
+      </React.Fragment>
   );
 };
 const appRouter = createBrowserRouter([
