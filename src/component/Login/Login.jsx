@@ -82,7 +82,7 @@ function Login() {
               padding:5
             }}
           >
-            <Avatar sx={{ m: 1, bgcolor: "#ff8c00" }}>
+            <Avatar sx={{ m: 1, bgcolor: "#FFC300" }}>
               <RestaurantIcon />
             </Avatar>
             <Typography component="h1" variant="h5">
