@@ -35,10 +35,7 @@ export const Body = () => {
   async function getData() {
     const response = await fetch(swiggy_url);
     const json = await response.json();
-<<<<<<< HEAD
     console.log(json);
-=======
->>>>>>> 2c8b8e4 (Mern Done)
     async function checkJsonData(jsonData) {
       for (let i = 0; i < jsonData?.data?.cards.length; i++) {
         let checkData =

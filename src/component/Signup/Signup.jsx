@@ -32,6 +32,7 @@ function Copyright(props) {
 }
 function Signup() {
   const nav = useNavigate();
+  const [back, setBack] = useState(false);
   const [input, setInput] = useState({
     name: "",
     email: "",
@@ -45,25 +46,29 @@ function Signup() {
     }));
   };
   const sendRequest = async () => {
-    const res = await axios
-      .post("http://localhost:3000/api/user/add", {
+    try {
+      const res = await axios.post("http://localhost:3000/api/user/add", {
         name: input.name,
         email: input.email,
         password: input.password,
-      })
-      .catch((err) => {
-        if ((err.status = 400)) {
-          alert(err.response.data);
-        }
       });
       const data = await res.data;
       dispatch(register(data));
+      setBack(true);
       return data;
+    } catch (err) {
+      if ((err.status = 400)) {
+        alert(err.response.data);
+      }
+    }
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    sendRequest().then(() => nav("/login"));
+    if (back) sendRequest().then(() => nav("/login"));
+    else sendRequest().then(() => nav("/"));
   };
+
   const defaultTheme = createTheme();
   return (
     <>

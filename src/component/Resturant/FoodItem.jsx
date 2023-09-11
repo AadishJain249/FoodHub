@@ -3,10 +3,6 @@ import { FaRegStopCircle, FaRegCaretSquareUp } from "react-icons/fa";
 import "./FoodItem.css"
 import { useDispatch, useSelector } from "react-redux";
 import { removeItem } from "../utils/cartSlice";
-<<<<<<< HEAD
-=======
-import { useNavigate } from "react-router-dom";
->>>>>>> 2c8b8e4 (Mern Done)
 const FoodItem = (props) => {
   const dispatch=useDispatch()
   const remove=()=>{

@@ -10,7 +10,7 @@ const register = async (req, res) => {
     let exist;
     exist = await user.findOne({ email });
     if (exist) {
-      return res.status(400).json({ message: "user already exist" });
+      return res.status(400).send("user already exist" );
     }
     const salt = await bycrypt.genSalt();
     const hash = await bycrypt.hash(password, salt);

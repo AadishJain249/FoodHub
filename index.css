@@ -99,20 +99,7 @@
   height: 144px;
   width: 230px;
 }
-<<<<<<< HEAD
 
-=======
-.carts1
-{
-  display: flex;
-}
-.carts
-{
-  padding-top: 16px;
-  font-size: 16px;
-  font-weight: 900;
-}
->>>>>>> 2c8b8e4 (Mern Done)
 /*Animation to Shimmer Component Cards */
 .stroke {
   height: 15px;
@@ -230,19 +217,11 @@ h6
   width: 100%;
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
   height: 50px;
-<<<<<<< HEAD
   line-height: 50px;
   background: #ffc300;
   color: #001d3d;
   text-align: center;
   position: fixed;
-=======
-  /* line-height: 50px; */
-  background: #ffc300;
-  color: #001d3d;
-  text-align: center;
-  /* position: fixed; */
->>>>>>> 2c8b8e4 (Mern Done)
 }
 .footer-text {
   text-align: center;
@@ -270,10 +249,25 @@ h6
   }
   .footer-div
   {
-<<<<<<< HEAD
     margin-top: 80px;
-=======
-    /* margin-top: 80px; */
->>>>>>> 2c8b8e4 (Mern Done)
   }
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  /* background-color: #F1F1F1; */
+  background: none;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #D6D6D7; 
+}
+
+::placeholder {
+  color: #a6a6a6;
 }

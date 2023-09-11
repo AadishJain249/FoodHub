@@ -37,7 +37,6 @@ function Login() {
     password: "",
   });
   const dispatch=useDispatch()
-  const navigate=useNavigate()
   const handleChange = (e) => {
     setInput((prev) => ({
       ...prev,
@@ -59,7 +58,7 @@ function Login() {
     })
     const data = await res.data;
     dispatch(login(data))
-    navigate('/cart')
+    // navigate('/cart')
     return data;
   };
   const handleSubmit = (e) => {
