@@ -1,3 +1,7 @@
 node_modules
+<<<<<<< HEAD
 parcel-cache
+=======
+.parcel-cache
+>>>>>>> 2c8b8e4 (Mern Done)
 dist

@@ -16,16 +16,28 @@
     "@mui/icons-material": "^5.14.3",
     "@mui/material": "^5.14.3",
     "@reduxjs/toolkit": "^1.9.5",
+<<<<<<< HEAD
     "axios": "^1.4.0",
     "babel-preset-react": "^6.24.1",
     "bootstrap": "^5.3.1",
+=======
+    "axios": "^1.5.0",
+    "babel-preset-react": "^6.24.1",
+    "bootstrap": "^5.3.1",
+    "firebase": "^10.3.1",
+>>>>>>> 2c8b8e4 (Mern Done)
     "lottie-react": "^2.4.0",
     "parcel": "^2.9.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.10.1",
     "react-redux": "^8.1.2",
+<<<<<<< HEAD
     "react-router-dom": "^6.14.2"
+=======
+    "react-router-dom": "^6.14.2",
+    "redux-persist": "^6.0.0"
+>>>>>>> 2c8b8e4 (Mern Done)
   },
   "devDependencies": {
     "@babel/core": "^7.22.9",
