@@ -4,7 +4,7 @@ import store from '../utils/store'
 import FoodItem from '../Resturant/FoodItem.jsx'
 import "./CartItem.css"
 function CartItem() {
- const cartItems=useSelector(store=>store.cart.items) 
+ const cartItems=useSelector(store=>store.cart.items)
   return (
     <>
     <p className='p2'>Item Selected  :  {cartItems.length}</p>

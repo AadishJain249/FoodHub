@@ -5,8 +5,9 @@ import Header from "./src/component/Header.js";
 import { Body } from "./src/component/Body.jsx";
 import About from "./src/component/About.jsx";
 import { Footer } from "./src/component/Footer.jsx";
-import Signup from "./src/component/Signup/Signup.jsx"
-import Login from "./src/component/Login/Login.jsx"
+import Signup from "./src/component/Signup/Signup.jsx";
+import Login from "./src/component/Login/Login.jsx";
+import { persistStore } from "redux-persist";
 import Error from "./src/component/Error/Error.jsx";
 import { RouterProvider, createBrowserRouter, Outlet } from "react-router-dom";
 import Contact from "./src/component/Contact";
@@ -14,8 +15,9 @@ import Shimmer from "./Shimmer";
 import Resturant from "./src/component/Resturant/Resturant.jsx";
 import userContext from "./src/component/utils/useContext.jsx";
 import { Provider } from "react-redux";
-import store from "./src/component/utils/store"
+import store from "./src/component/utils/store";
 import CartItem from "./src/component/CartItem/CartItem.jsx";
+import { PersistGate } from "redux-persist/integration/react";
 // now we have d2 files insta mart and my bundle file
 // import Resturant from "./src/component/Resturant/Resturant";
 // imagine if there are 1000 of components in our app
@@ -36,24 +38,21 @@ const AppLayout = () => {
     name: "aadi",
     email: "aadi@gmail.com",
   });
+  
   return (
     <React.Fragment>
       <Provider store={store}>
-      <userContext.Provider
-        value={{
-          user: user,
-          setUser:setUser
-        }}
-      >
-        <Header></Header>
-        {/* <About></About>  if path is /about*/}
-        {/* if path is / it is body */}
-        {/* All children will go in outlet */}
-        <Outlet> </Outlet>
-        {/* <Footer></Footer> */}
-      </userContext.Provider>
+        {/* <PersistGate loading={null} persistor={persistStore(store)}> */}
+        
+            <Header></Header>
+            {/* <About></About>  if path is /about*/}
+            {/* if path is / it is body */}
+            {/* All children will go in outlet */}
+            <Outlet> </Outlet>
+            {/* <Footer></Footer> */}
+        {/* </PersistGate> */}
       </Provider>
-      </React.Fragment>
+    </React.Fragment>
   );
 };
 const appRouter = createBrowserRouter([
@@ -74,12 +73,12 @@ const appRouter = createBrowserRouter([
         // its children
       },
       {
-        path:"/",
-        element:<Signup></Signup>
+        path: "/",
+        element: <Signup></Signup>,
       },
       {
-        path:"/login",
-        element:<Login></Login>
+        path: "/login",
+        element: <Login></Login>,
       },
       {
         path: "/contact",

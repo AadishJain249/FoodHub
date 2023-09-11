@@ -5,7 +5,9 @@ import { useNavigate } from "react-router-dom";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
-import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+// import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import RestaurantIcon from "@mui/icons-material/Restaurant";
+
 import Typography from "@mui/material/Typography";
 import { Link } from "react-router-dom";
 import Container from "@mui/material/Container";
@@ -77,10 +79,11 @@ function Login() {
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
+              padding:5
             }}
           >
-            <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-              <LockOutlinedIcon />
+            <Avatar sx={{ m: 1, bgcolor: "#ff8c00" }}>
+              <RestaurantIcon />
             </Avatar>
             <Typography component="h1" variant="h5">
               Login

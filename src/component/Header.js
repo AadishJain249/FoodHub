@@ -107,14 +107,14 @@ const Header = () => {
   console.log(flag);
   return (
     <>
-      {flag ? (
+      {/* {flag ? ( */}
         <div className="header">
           <Title />
           <NavComponent />
         </div>
-      ) : (
-        ""
-      )}
+      {/* ) : ( */}
+        {/* "" */}
+      {/* )} */}
     </>
   );
 };

@@ -6,6 +6,13 @@ import "./Resturant.css";
 import ResturantMenu from "./ResturantMenu.jsx";
 import useResturant from "../utils/useResturant";
 import Shimmer from "../../../Shimmer";
+import AspectRatio from '@mui/joy/AspectRatio';
+import Button from '@mui/joy/Button';
+import Card from '@mui/joy/Card';
+import CardContent from '@mui/joy/CardContent';
+import IconButton from '@mui/joy/IconButton';
+import Typography from '@mui/joy/Typography';
+import BookmarkAdd from '@mui/icons-material/BookmarkAddOutlined';
 function Resturant() {
   const {id} = useParams();
   const {restaurant,menu}=useResturant(id)
@@ -16,34 +23,40 @@ function Resturant() {
   }
   return (
     <>
-      <div className="cont">
-        <div className="restaurant-menu">
-          <div className="restaurant-summary">
-            <img
-              className="restaurant-img"
-              src={Img_Link + restaurant?.cloudinaryImageId}
-              alt={restaurant?.name}
-            />
-            <div className="restaurant-summary-details">
-              <h2 className="restaurant-title">{restaurant?.name}</h2>
-              <p className="restaurant-tags">
-                {restaurant?.cuisines?.join(", ")}
-              </p>
-              <div className="restaurant-details">
-                <div className="restaurant-rating">
-                  <AiFillStar />
-                  <span>{restaurant?.avgRating}</span>
-                </div>
-                <div className="restaurant-rating-slash">|</div>
-                <div>{restaurant?.locality}</div>
-                <div className="restaurant-rating-slash">|</div>
-                <div>{restaurant?.costForTwoMessage}</div>
-                <div className="restaurant-rating-slash">|</div>
-                <div>{check > 999 ? rating + "K+" : rating}</div>
-              </div>
-            </div>
-          </div>
+      {/* <div className="cont"> */}
+      <div className="cen">
+      <Card sx={{ width: 320 }}>
+      <div>
+        <Typography level="title-lg">{restaurant?.name}</Typography>
+        <Typography level="body-sm">{restaurant?.locality}</Typography>
+        <IconButton
+          aria-label="bookmark Bahamas Islands"
+          variant="plain"
+          color="neutral"
+          size="sm"
+          sx={{ position: 'absolute', top: '0.875rem', right: '0.5rem' }}
+        >
+          <BookmarkAdd />
+        </IconButton>
+      </div>
+      <AspectRatio minHeight="120px" maxHeight="200px">
+        <img
+          src={Img_Link + restaurant?.cloudinaryImageId}
+          srcSet="https://images.unsplash.com/photo-1527549993586-dff825b37782?auto=format&fit=crop&w=286&dpr=2 2x"
+          loading="lazy"
+          alt=""
+        />
+      </AspectRatio>
+      <CardContent orientation="horizontal">
+        <div>
+          <Typography level="body-xs">Rating:</Typography>
+          <Typography fontSize="lg" fontWeight="lg">
+            {check > 999 ? rating + "K+" : rating}
+          </Typography>
         </div>
+      </CardContent>
+    </Card>
+    </div>
         <h2 className="available">Available Items</h2>
         <div className="menu">
         {menu.length===0?(<Shimmer></Shimmer>):
@@ -53,7 +66,7 @@ function Resturant() {
             }
           })}
           </div>
-      </div>
+      {/* </div> */}
     </>
   );
 }
