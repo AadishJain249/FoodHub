@@ -31,6 +31,7 @@ export const Title = () => {
   return <ImgComponent item={logo} itemname={"logo"} />;
 };
 import { logout } from "./utils/authSlice";
+import { removeCart } from "./utils/cartSlice";
 export const NavComponent = () => {
   const theme = {
     width: "50px",
@@ -48,6 +49,7 @@ export const NavComponent = () => {
   {
     dispatch(logout());
     Navigate("/login");
+    dispatch(removeCart())
   };
   return (
     <div className="nav-items">
