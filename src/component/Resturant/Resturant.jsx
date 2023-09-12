@@ -23,9 +23,9 @@ function Resturant() {
   }
   return (
     <>
-      {/* <div className="cont"> */}
+      <div className="cont">
       <div className="cen">
-      <Card sx={{ width: 320 }}>
+      <Card sx={{ width: 320 ,backgroundColor:"#FFF0F5",":hover":{  boxShadow: 20,}}}>
       <div>
         <Typography level="title-lg">{restaurant?.name}</Typography>
         <Typography level="body-sm">{restaurant?.locality}</Typography>
@@ -62,11 +62,11 @@ function Resturant() {
         {menu.length===0?(<Shimmer></Shimmer>):
           menu.cards.map((e, index) => {
             if (index >= 1 && index <= menu.cards.length - 3) {
-              return <ResturantMenu key={index}{...e.card.card}></ResturantMenu>;
+              return <ResturantMenu key={index}{...e.card.card}></ResturantMenu>
             }
           })}
           </div>
-      {/* </div> */}
+      </div>
     </>
   );
 }

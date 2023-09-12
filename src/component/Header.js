@@ -42,9 +42,8 @@ export const NavComponent = () => {
   const dispatch = useDispatch();
   const Navigate = useNavigate();
   const {items} = useSelector((store) => store.cart);
-  console.log(items);
   const {users} = useSelector((store) => store.auth);
-  console.log(users);
+  
   const handleLogout = () => 
   {
     dispatch(logout());
@@ -106,17 +105,15 @@ export const NavComponent = () => {
 const Header = () => {
 
   const {flag}  = useSelector((store) => store.auth);
-  console.log(flag);
   return (
     <>
-      {/* {flag ? ( */}
+      {flag ? (
         <div className="header">
           <Title />
           <NavComponent />
         </div>
-      {/* ) : ( */}
-        {/* "" */}
-      {/* )} */}
+         ):""}
+      
     </>
   );
 };

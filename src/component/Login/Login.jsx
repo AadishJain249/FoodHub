@@ -5,9 +5,8 @@ import { useNavigate } from "react-router-dom";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
-// import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import RestaurantIcon from "@mui/icons-material/Restaurant";
-
+import { toast, ToastContainer } from "react-toastify";
 import Typography from "@mui/material/Typography";
 import { Link } from "react-router-dom";
 import Container from "@mui/material/Container";
@@ -34,11 +33,12 @@ function Copyright(props) {
 }
 function Login() {
   const nav = useNavigate();
+  const [back, setBack] = useState(false);
   const [input, setInput] = useState({
     email: "",
     password: "",
   });
-  const dispatch=useDispatch()
+  const dispatch = useDispatch();
   const handleChange = (e) => {
     setInput((prev) => ({
       ...prev,
@@ -46,31 +46,56 @@ function Login() {
     }));
   };
   const options = {
-    'Content-Type': 'application/json'
-  } 
+    "Content-Type": "application/json",
+  };
   const sendRequest = async () => {
-    const res = await axios.post("http://localhost:3000/api/user/login", {
-      email: input.email,
-      password: input.password,
-    },options).catch((e)=>{
-      if((e.status=400))
-      {
-        alert(e.response.data)
-      }
-    })
-    const data = await res.data;
-    dispatch(login(data))
-    // navigate('/cart')
-    return data;
+    try {
+      const res = await axios.post(
+        "http://localhost:3000/api/user/login",
+        {
+          email: input.email,
+          password: input.password,
+        },
+        options
+      );
+      const data = await res.data;
+      dispatch(login(data));
+      setBack(true);
+      toast.success("Login Done Succesfully Click Submit Button Once Again");
+      return data;
+    } catch (error) {
+      console.log(error);
+      toast.error(error.response.data);
+    }
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    sendRequest().then(() => nav("/cart"));
+    if (back) sendRequest().then(() => nav("/cart"));
+    else sendRequest().then(() => nav("/login"));
   };
+  // const displayLoginNotification = () => {
+  //   if(back)
+  //     toast.success("LoggedIn Successfull");
+  //   else
+  //     toast.success("LoggedIn UnSuccessfull");
+  // };
+ 
   const defaultTheme = createTheme();
   return (
     <>
       <ThemeProvider theme={defaultTheme}>
+        <ToastContainer
+          position="top-left"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
         <Container component="main" maxWidth="xs">
           <CssBaseline />
           <Box
@@ -79,7 +104,7 @@ function Login() {
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
-              padding:5
+              padding: 5,
             }}
           >
             <Avatar sx={{ m: 1, bgcolor: "#FFC300" }}>
@@ -118,6 +143,7 @@ function Login() {
               />
               <Button
                 type="submit"
+                // onClick={displayLoginNotification}
                 fullWidth
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}

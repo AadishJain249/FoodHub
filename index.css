@@ -57,15 +57,18 @@
   width: 20px;
   height: 20px;
 }
-
 .container {
   margin-top: 90px;
 }
-
+.main
+{
+  margin: 0 60px;
+}
 .search-container {
   display: flex;
   justify-content: space-evenly;
   height: 100px;
+  
   max-width: 500px;
   align-items: center;
   margin: auto;
@@ -138,7 +141,8 @@
   color: #001d3d;
   flex-basis: 60px;
   border-radius: 7px;
-  border: #ffc300;
+  border:2px solid #ffc300;
+  font-weight: 900;
   outline: none;
   font-size: 16px;
 }
@@ -160,12 +164,16 @@
   font-size: 14px;
   color: #c70039;
 }
+.card-img {
+  width :100%;
+  height: 120px;
+}
 .restaurant-list {
   display: flex;
-  width: 100%;
   flex-wrap: wrap;
-  gap : 20px;
-  justify-content:space-between;
+  width: 100%;
+  justify-content:space-evenly;
+  /* flex-wrap:wrap; */
 }
 h6
 {
@@ -207,10 +215,10 @@ h6
 .rating {
   display: flex;
   align-items: center;
-  height: 20px;
-  width: 43px;
-  padding: 0 5px;
-  gap: 5px;
+  /* height: 20px; */
+  /* width: 43px; */
+  /* padding: 0 5px; */
+  /* gap: 5px; */
 }
 
 .footer-div {
@@ -254,7 +262,7 @@ h6
 }
 
 ::-webkit-scrollbar {
-  width: 12px;
+  width: 5px;
 }
 
 /* Track */

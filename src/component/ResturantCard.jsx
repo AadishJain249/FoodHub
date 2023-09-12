@@ -1,5 +1,8 @@
-import  {Img_Link} from "../../content";
-import {AiFillStar}  from "react-icons/ai";
+import { Img_Link } from "../../content";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import Typography from "@mui/material/Typography";
+import { AiFillStar } from "react-icons/ai";
 const RestaurantCard = (props) => {
   const buttonStyle = {
     backgroundColor:
@@ -11,22 +14,40 @@ const RestaurantCard = (props) => {
     color: isNaN(props.avgRating) ? "#535665" : "#fff",
   };
   return (
-    <div className="card">
+    <div className="main">
+      <Card sx={{ backgroundColor:'#FFF0F5',minWidth: 220, minHeight: 350, borderRadius: 4,":hover":{  boxShadow: 20,}}}>
       <img className="card-img" src={Img_Link + props.cloudinaryImageId} alt={name} />
-      <div className="card-body">
-        <h6 className="card-title">{props.name}</h6>
-        <p className="card-tags">{props.cuisines.join(", ")}</p>
-        <div className="card-details">
-          <div className="rating" style={buttonStyle}>
-            <AiFillStar />
-            <span>{props.avgRating}</span>
-          </div>
-          <div>•</div>
-          <div>{props.sla?.lastMileTravelString }</div>
-          <div>•</div>
-          <div>{props.costForTwo}</div>
-        </div>
-      </div>
+        <CardContent>
+          <Typography gutterBottom variant="h5" component="div">
+            {props.name}
+          </Typography>
+          <Typography
+            style={buttonStyle}
+            width="45px"
+            fontWeight="900"
+            variant="body2"
+            color="text.secondary"
+          >
+            <div className="rating" style={buttonStyle}>
+              <AiFillStar />
+              <span>{props.avgRating}</span>
+            </div>
+          </Typography>
+          <Typography
+            sx={{
+              display: "-webkit-box",
+              overflow: "hidden",
+              WebkitBoxOrient: "vertical",
+              WebkitLineClamp: 2,
+            }}
+            variant="body2"
+            color="text.secondary"
+          >
+            <br></br>
+            {props.cuisines.join(", ")}
+          </Typography>
+        </CardContent>
+      </Card>
     </div>
   );
 };

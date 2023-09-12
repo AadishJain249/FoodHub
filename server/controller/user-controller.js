@@ -47,7 +47,6 @@ const register = async (req, res) => {
       await users.save();
       return res.status(200).send(users);
     }
-    // const token=jwt.sign({id:users._id},"AadishKey")
   } catch (error) {}
 };
 const login = async (req, res) => {
@@ -68,7 +67,6 @@ const login = async (req, res) => {
     console.log(token);
     return res.status(200).json({ users, token });
   } catch (error) {
-    // console.log(error.message);
   }
 };
 module.exports = { register, login };

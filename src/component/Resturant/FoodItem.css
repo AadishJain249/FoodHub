@@ -1,54 +1,3 @@
-.restaurant1-menu {
-  padding-top: 100px;
-  height: 300px;
-  width: auto;
-}
-.restaurant1-summary {
-  display: flex;
-  height: 200px;
-  justify-content: center;
-  align-items: center;
-  background-color: var(--light-black);
-  color: var(--white);
-}
-.restaurant1-img {
-  width: 250px;
-  height: auto;
-  border-radius: 5px;
-}
-.restaurant1-summary-details {
-  display: flex;
-  flex-direction: column;
-  flex-basis: 520px;
-  margin: 20px;
-}
-.restaurant1-title {
-  font-size: 16px;
-  max-width: 540px;
-  font-weight: 300;
-}
-.restaurant1-tags {
-  white-space: nowrap;
-  color: inherit;
-  opacity: 0.7;
-  font-size: 15px;
-  max-width: 540px;
-}
-.restaurant1-details {
-  display: flex;
-  margin-top: 18px;
-  /* justify-content: space-between; */
-  /* align-items: center; */
-  font-size: 12px;
-  font-weight: 600;
-  padding-bottom: 10px;
-  color: inherit;
-  font-weight: 600;
-  font-size: 16px;
-}
-.symbol {
-  padding-left: 5px;
-}
 .nonveg {
   color: red;
   margin-right: 10px;
@@ -58,30 +7,4 @@
   color: lightgreen;
   margin-right: 6px;
   font-size: 13px;
-}
-
-@media only screen and (max-width: 600px) {
-  .restaurant1-summary
-  {
-    display: block;
-    text-align: center;
-  }
-  .restaurant1-img
-  {
-    height: 80px;
-    width: 80px;
-  }
-  .restaurant1-title
-  {
-    font-size: 12px;
-  }
-  .restaurant1-tags
-  {
-    font-size: 12px;
-  }
-  .restaurant1-details
-  {
-    display: block;
-    font-size: 12px;
-  }
 }

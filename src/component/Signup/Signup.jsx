@@ -5,7 +5,8 @@ import { useNavigate } from "react-router-dom";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
-// import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import RestaurantIcon from "@mui/icons-material/Restaurant";
 import Typography from "@mui/material/Typography";
 import { Link } from "react-router-dom";
@@ -56,24 +57,47 @@ function Signup() {
       const data = await res.data;
       dispatch(register(data));
       setBack(true);
+      toast.success("Signup Successful Click Signin Button Once Again");
       return data;
     } catch (err) {
       if ((err.status = 400)) {
-        alert(err.response.data);
+        toast.error(err.response.data)
       }
     }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (back) sendRequest().then(() => nav("/login"));
+    
+    if (back) 
+    {
+      sendRequest().then(() => nav("/login"));
+    }
     else sendRequest().then(() => nav("/"));
   };
-
+  const displayLoginNotification = () => {
+    if(back)
+      toast.success("Signin Successfull");
+    else
+      toast.success("Signin UnSuccessfull");
+  };
+ 
   const defaultTheme = createTheme();
   return (
     <>
       <ThemeProvider theme={defaultTheme}>
+      <ToastContainer
+        position='top-left'
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme='light'
+      />
         <Container component="main" maxWidth="xs">
           <CssBaseline />
           <Box
@@ -132,6 +156,7 @@ function Signup() {
               />
               <Button
                 type="submit"
+                // onClick={displayLoginNotification}
                 fullWidth
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}

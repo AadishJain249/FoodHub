@@ -8,4 +8,20 @@
   text-align: center;
   padding-top: 50px;
   font-weight: 900;
+  margin-bottom: 30px;
+}
+.cont
+{
+  display: block;
+  justify-content: center;
+  /* */
+}
+.menu
+{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin: 20px 0;
+  padding-bottom: 30px;
 }

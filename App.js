@@ -3,21 +3,21 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import Header from "./src/component/Header.js";
 import { Body } from "./src/component/Body.jsx";
-import About from "./src/component/About.jsx";
-import { Footer } from "./src/component/Footer.jsx";
+// import About from "./src/component/About.jsx";
+// import { Footer } from "./src/component/Footer.jsx";
 import Signup from "./src/component/Signup/Signup.jsx";
 import Login from "./src/component/Login/Login.jsx";
-import { persistStore } from "redux-persist";
+// import { persistStore } from "redux-persist";
 import Error from "./src/component/Error/Error.jsx";
 import { RouterProvider, createBrowserRouter, Outlet } from "react-router-dom";
-import Contact from "./src/component/Contact";
+// import Contact from "./src/component/Contact";
 import Shimmer from "./Shimmer";
 import Resturant from "./src/component/Resturant/Resturant.jsx";
-import userContext from "./src/component/utils/useContext.jsx";
+// import userContext from "./src/component/utils/useContext.jsx";
 import { Provider } from "react-redux";
 import store from "./src/component/utils/store";
 import CartItem from "./src/component/CartItem/CartItem.jsx";
-import { PersistGate } from "redux-persist/integration/react";
+// import { PersistGate } from "redux-persist/integration/react";
 // now we have d2 files insta mart and my bundle file
 // import Resturant from "./src/component/Resturant/Resturant";
 // imagine if there are 1000 of components in our app
@@ -32,13 +32,8 @@ import { PersistGate } from "redux-persist/integration/react";
 // 5.chunking
 // react provides us lazy suspsense to do optimization
 // so instead of normal import we will be doing like this
-const InstaMart = lazy(() => import("./src/component/InstaMart"));
+// const InstaMart = lazy(() => import("./src/component/InstaMart"));
 const AppLayout = () => {
-  const [user, setUser] = useState({
-    name: "aadi",
-    email: "aadi@gmail.com",
-  });
-  
   return (
     <React.Fragment>
       <Provider store={store}>
@@ -61,11 +56,11 @@ const appRouter = createBrowserRouter([
     element: <AppLayout></AppLayout>,
     errorElement: <Error></Error>,
     children: [
-      {
-        path: "/about",
-        element: <About></About>, // i want my about page to have footer and header also we can make by making
-        // its children
-      },
+      // {
+      //   path: "/about",
+      //   element: <About></About>, // i want my about page to have footer and header also we can make by making
+      //   // its children
+      // },
       ,
       {
         path: "/cart",
@@ -80,23 +75,23 @@ const appRouter = createBrowserRouter([
         path: "/login",
         element: <Login></Login>,
       },
-      {
-        path: "/contact",
-        element: <Contact></Contact>, // i want my about page to have footer and header also we can make by making
-        // its children
-      },
+      // {
+      //   path: "/contact",
+      //   element: <Contact></Contact>, // i want my about page to have footer and header also we can make by making
+      //   // its children
+      // },
       {
         path: "/resturant/:id",
         element: <Resturant></Resturant>,
       },
-      {
-        path: "/insta",
-        element: (
-          <Suspense fallback={<Shimmer></Shimmer>}>
-            <InstaMart></InstaMart>
-          </Suspense>
-        ),
-      },
+      // {
+      //   path: "/insta",
+      //   element: (
+      //     <Suspense fallback={<Shimmer></Shimmer>}>
+      //       <InstaMart></InstaMart>
+      //     </Suspense>
+      //   ),
+      // },
       {
         path: "/cartItems",
         element: <CartItem></CartItem>, // i want my about page to have footer and header also we can make by making
