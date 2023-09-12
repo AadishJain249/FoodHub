@@ -33,7 +33,7 @@ import CartItem from "./src/component/CartItem/CartItem.jsx";
 // react provides us lazy suspsense to do optimization
 // so instead of normal import we will be doing like this
 // const InstaMart = lazy(() => import("./src/component/InstaMart"));
-const AppLayout = () => {
+const AppLayout = () => { 
   return (
     <React.Fragment>
       <Provider store={store}>

@@ -22,7 +22,6 @@ export const Body = () => {
       setError("No matches restaurant found");
     } else if (text !== " ") {
       setSearch(res);
-      console.log(search);
       setError("");
     } else {
       setSearch(restaurant);
@@ -60,18 +59,6 @@ export const Body = () => {
   return (
     <div className="container">
       <div className="search-container">
-        {/* <input
-        type="text"
-        className="search-container"
-        key="1"
-        value={user.name}
-        onChange={(e)=>{
-          setUser({
-            name:e.target.value,
-            email:"hey@gmail.com"
-          })
-        }}
-        ></input> */}
         <input
           type="text"
           placeholder=" Search for restaurant"
@@ -86,8 +73,7 @@ export const Body = () => {
             searchData(text, restaurant);
           }}
         >
-          {" "}
-          Search{" "}
+          Search
         </button>
       </div>
       {error && (

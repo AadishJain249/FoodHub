@@ -16,14 +16,10 @@ import {
   FormControl,
 } from '@mui/material';
 
-// import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 export const ImgComponent = ({ item, itemname }) => {
   return (
-    <a href="/cart">
-      {" "}
-      <img className={itemname} alt={itemname} src={item} />{" "}
-    </a>
+      <img className={itemname} alt={itemname} src={item} />
   );
 };
 

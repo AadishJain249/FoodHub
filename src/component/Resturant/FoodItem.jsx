@@ -38,11 +38,8 @@ const FoodItem = (props) => {
           <Typography gutterBottom variant="h5" component="div">
             {props.name}
           </Typography>
-          <Typography fontWeight="900" variant="body2" color="text.secondary">
-            {props.description}
-          </Typography>
+         
             <Typography
-              fontWeight="900"
               variant="body2"
               color="text.secondary"
               marginTop="30"
@@ -51,11 +48,10 @@ const FoodItem = (props) => {
             </Typography>
             
           <Typography variant="body2" color="text.secondary">
-            {props.itemAttribute?.vegClassifier === "NONVEG" ? (
-              <FaRegCaretSquareUp className="nonveg" size="1.25rem" />
-            ) : (
-              <FaRegStopCircle className="veg" size="1.25rem" />
-            )}
+          {props.itemAttribute?.vegClassifier === "NONVEG"?"Non Veg 🔺":"Veg  🌿 "}
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            {props.description}
           </Typography>
         </CardContent>
       </Card>
