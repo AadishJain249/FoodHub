@@ -10,7 +10,7 @@ const register = async (req, res) => {
     let exist;
     exist = await user.findOne({ email });
     if (exist) {
-      return res.status(400).send("user already exist" );
+      return res.status(200).send("user already exist" );
     }
     const salt = await bycrypt.genSalt();
     const hash = await bycrypt.hash(password, salt);
@@ -35,17 +35,18 @@ const register = async (req, res) => {
       .not()
       .spaces();
     if (!emailValid.validate(email)) {
-      return res.status(400).send("Wrong Email Credentials");
+      return res.status(401).send("Wrong Email Credentials");
     }
     if (!schema.validate(password)) {
       return res
-        .status(400)
+        .status(401)
         .send(
           "Wrong Password Password must contain at least 1 uppercase lowercase digit special character and min of 8 length"
         );
-    } else {
+    } 
+    else {
       await users.save();
-      return res.status(200).send(users);
+      return res.status(201).send(users);
     }
   } catch (error) {}
 };

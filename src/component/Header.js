@@ -3,10 +3,8 @@ import cart from "../../images/cart.png";
 import profile from "../../images/profile.png";
 import home from "../../images/home.png";
 import { useSelector } from "react-redux";
-import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import './Header.css'
-import store from "./utils/store";
 import { useNavigate } from "react-router-dom";
 import {
   InputBase,
@@ -39,13 +37,17 @@ export const NavComponent = () => {
   const Navigate = useNavigate();
   const {items} = useSelector((store) => store.cart);
   const {users} = useSelector((store) => store.auth);
-  
+  console.log(users);
   const handleLogout = () => 
   {
     dispatch(logout());
     Navigate("/login");
+    localStorage.removeItem("IsLogin",false)
+    localStorage.removeItem("user","")
     dispatch(removeCart())
   };
+  const user=localStorage.getItem("user")
+  console.log(user);
   return (
     <div className="nav-items">
       <ul>
@@ -71,9 +73,9 @@ export const NavComponent = () => {
           </Link>
         </li>
         <li>
-          <FormControl variant="standard" value={users ? users.name : ""}>
+          <FormControl variant="standard" value={user ? user : ""}>
             <Select
-              value={users ? users.name : ""}
+              value={user ? user : ""}
               sx={{
                 width: "150px",
                 borderRadius: "0.25rem",
@@ -86,8 +88,8 @@ export const NavComponent = () => {
               }}
               input={<InputBase />}
             >
-              <MenuItem value={users ? users.name : ""}>
-                <Typography>{users ? users.name : ""}</Typography>
+              <MenuItem value={user? user : ""}>
+                <Typography>{user ? user : ""}</Typography>
               </MenuItem>
               <MenuItem onClick={handleLogout}>Log Out</MenuItem>
             </Select>
@@ -99,11 +101,12 @@ export const NavComponent = () => {
   )
 }
 const Header = () => {
-
-  const {flag}  = useSelector((store) => store.auth);
+  const getAuth=localStorage.getItem("IsLogin")
+  console.log(getAuth);
+  // const {flag}  = useSelector((store) => store.auth);
   return (
     <>
-      {flag ? (
+      {getAuth ? (
         <div className="header">
           <Title />
           <NavComponent />

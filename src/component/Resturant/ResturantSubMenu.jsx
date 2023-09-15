@@ -13,9 +13,10 @@ function ResturantSubMenu(props) {
     dispatch(addItem(item));
   };
   const themeStyle = {
-    width: "100px",
+    width: "110px",
     marginLeft:"10px",
-    background: "#F5F5DC",
+    background: "#F5F5F5",
+    padding:"5px", 
     color: "black",
     borderRadius: "20px",
     fontWeight: "bolder",
@@ -56,9 +57,6 @@ function ResturantSubMenu(props) {
             
           <Typography paddingBottom="20" variant="body2" color="text.secondary">
             {props?.info?.itemAttribute?.vegClassifier === "NONVEG"?"Non Veg 🔺":"Veg  🌿 "}
-          </Typography>
-          <Typography fontSize="12px" variant="body2" color="text.secondary">
-            {props?.info?.description}
           </Typography>
         </CardContent>
 

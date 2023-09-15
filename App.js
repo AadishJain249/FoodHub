@@ -16,6 +16,8 @@ import Resturant from "./src/component/Resturant/Resturant.jsx";
 // import userContext from "./src/component/utils/useContext.jsx";
 import { Provider } from "react-redux";
 import store from "./src/component/utils/store";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import CartItem from "./src/component/CartItem/CartItem.jsx";
 // import { PersistGate } from "redux-persist/integration/react";
 // now we have d2 files insta mart and my bundle file
@@ -33,20 +35,36 @@ import CartItem from "./src/component/CartItem/CartItem.jsx";
 // react provides us lazy suspsense to do optimization
 // so instead of normal import we will be doing like this
 // const InstaMart = lazy(() => import("./src/component/InstaMart"));
-const AppLayout = () => { 
+const AppLayout = () => {
   return (
     <React.Fragment>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
+      {/* Same as */}
+      <ToastContainer />
+
       <Provider store={store}>
         {/* <PersistGate loading={null} persistor={persistStore(store)}> */}
-        
-            <Header></Header>
-            {/* <About></About>  if path is /about*/}
-            {/* if path is / it is body */}
-            {/* All children will go in outlet */}
-            <Outlet> </Outlet>
-            {/* <Footer></Footer> */}
+
+        <Header></Header>
+        {/* <About></About>  if path is /about*/}
+        {/* if path is / it is body */}
+        {/* All children will go in outlet */}
+        <Outlet> </Outlet>
+        {/* <Footer></Footer> */}
         {/* </PersistGate> */}
       </Provider>
+      {/* </ToastContainer> */}
     </React.Fragment>
   );
 };
@@ -56,12 +74,12 @@ const appRouter = createBrowserRouter([
     element: <AppLayout></AppLayout>,
     errorElement: <Error></Error>,
     children: [
+      ,
       // {
       //   path: "/about",
       //   element: <About></About>, // i want my about page to have footer and header also we can make by making
       //   // its children
       // },
-      ,
       {
         path: "/cart",
         element: <Body></Body>, // i want my about page to have footer and header also we can make by making

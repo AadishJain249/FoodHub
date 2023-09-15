@@ -33,7 +33,6 @@ function Copyright(props) {
 }
 function Login() {
   const nav = useNavigate();
-  const [back, setBack] = useState(false);
   const [input, setInput] = useState({
     email: "",
     password: "",
@@ -60,26 +59,21 @@ function Login() {
       );
       const data = await res.data;
       dispatch(login(data));
-      setBack(true);
-      toast.success("Login Done Succesfully Click Submit Button Once Again");
+      console.log(data);
+      toast.success("Login Done Succesfully");
+      localStorage.setItem("IsLogin",true)
+      localStorage.setItem("user",data.users.name)
+      nav('/cart')
       return data;
     } catch (error) {
-      console.log(error);
       toast.error(error.response.data);
+      nav('/')
     }
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (back) sendRequest().then(() => nav("/cart"));
-    else sendRequest().then(() => nav("/login"));
+    sendRequest().then()
   };
-  // const displayLoginNotification = () => {
-  //   if(back)
-  //     toast.success("LoggedIn Successfull");
-  //   else
-  //     toast.success("LoggedIn UnSuccessfull");
-  // };
- 
   const defaultTheme = createTheme();
   return (
     <>

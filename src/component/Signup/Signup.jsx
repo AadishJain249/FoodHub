@@ -34,7 +34,6 @@ function Copyright(props) {
 }
 function Signup() {
   const nav = useNavigate();
-  const [back, setBack] = useState(false);
   const [input, setInput] = useState({
     name: "",
     email: "",
@@ -54,50 +53,45 @@ function Signup() {
         email: input.email,
         password: input.password,
       });
+      
       const data = await res.data;
       dispatch(register(data));
-      setBack(true);
-      toast.success("Signup Successful Click Signin Button Once Again");
+      localStorage.setItem("IsLogin",true)
+      toast.success("Succesfully Login")
+      localStorage.setItem("user",input.name)
+      nav('/login')
       return data;
     } catch (err) {
-      if ((err.status = 400)) {
-        toast.error(err.response.data)
-      }
+      toast.error(err.response.data)
+      nav('/')
     }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
-    if (back) 
-    {
-      sendRequest().then(() => nav("/login"));
-    }
-    else sendRequest().then(() => nav("/"));
+    sendRequest().then();
   };
   const displayLoginNotification = () => {
-    if(back)
-      toast.success("Signin Successfull");
-    else
-      toast.success("Signin UnSuccessfull");
+    if (back) toast.success("Signin Successfull");
+    else toast.success("Signin UnSuccessfull");
   };
- 
+
   const defaultTheme = createTheme();
   return (
     <>
       <ThemeProvider theme={defaultTheme}>
-      <ToastContainer
-        position='top-left'
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme='light'
-      />
+        <ToastContainer
+          position="top-left"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
         <Container component="main" maxWidth="xs">
           <CssBaseline />
           <Box

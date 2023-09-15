@@ -15,10 +15,10 @@ const RestaurantCard = (props) => {
   };
   return (
     <div className="main">
-      <Card sx={{ backgroundColor:'#FFF0F5',minWidth: 220, minHeight: 350, borderRadius: 4,":hover":{  boxShadow: 20,}}}>
+      <Card sx={{ backgroundColor:'#F5F5F5',minWidth: 200, minHeight: 250, borderRadius: 4,":hover":{  boxShadow: 20,}}}>
       <img className="card-img" src={Img_Link + props.cloudinaryImageId} alt={name} />
         <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
+          <Typography gutterBottom variant="p" component="div">
             {props.name}
           </Typography>
           <Typography
