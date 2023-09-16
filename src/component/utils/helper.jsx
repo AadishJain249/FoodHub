@@ -15,3 +15,5 @@ export const filterType = (text, res) => {
   console.log(data);
   return data;
 };
+
+export const users=localStorage.getItem("IsLogin")

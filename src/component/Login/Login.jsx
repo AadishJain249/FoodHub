@@ -59,7 +59,6 @@ function Login() {
       );
       const data = await res.data;
       dispatch(login(data));
-      console.log(data);
       toast.success("Login Done Succesfully");
       localStorage.setItem("IsLogin",true)
       localStorage.setItem("user",data.users.name)

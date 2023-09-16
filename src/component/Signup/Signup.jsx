@@ -15,6 +15,7 @@ import { useDispatch } from "react-redux";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import axios from "axios";
 import { register } from "../utils/authSlice";
+import { Body } from "../Body";
 function Copyright(props) {
   return (
     <Typography
@@ -53,125 +54,127 @@ function Signup() {
         email: input.email,
         password: input.password,
       });
-      
+
       const data = await res.data;
       dispatch(register(data));
-      localStorage.setItem("IsLogin",true)
-      toast.success("Succesfully Login")
-      localStorage.setItem("user",input.name)
-      nav('/login')
+      // localStorage.setItem("IsLogin",true)
+      toast.success("Succesfully Login");
+      nav("/login");
       return data;
     } catch (err) {
-      toast.error(err.response.data)
-      nav('/')
+      toast.error(err.response.data);
+      nav("/");
     }
   };
-
+  let user = localStorage.getItem("IsLogin");
   const handleSubmit = (e) => {
     e.preventDefault();
-    sendRequest().then();
-  };
-  const displayLoginNotification = () => {
-    if (back) toast.success("Signin Successfull");
-    else toast.success("Signin UnSuccessfull");
-  };
 
+    sendRequest().then().then(()=>{
+      localStorage.setItem("user", input.name);
+    });
+  };
+  console.log(user);
   const defaultTheme = createTheme();
   return (
     <>
-      <ThemeProvider theme={defaultTheme}>
-        <ToastContainer
-          position="top-left"
-          autoClose={5000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-          theme="light"
-        />
-        <Container component="main" maxWidth="xs">
-          <CssBaseline />
-          <Box
-            sx={{
-              marginTop: 8,
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              padding: 5,
-            }}
-          >
-            <Avatar sx={{ m: 1, bgcolor: "#FFC300" }}>
-              <RestaurantIcon />
-            </Avatar>
-            <Typography component="h1" variant="h5">
-              Sign in
-            </Typography>
+      {user != null ? (
+        <Body></Body>
+      ) : (
+        <ThemeProvider theme={defaultTheme}>
+          <ToastContainer
+            position="top-left"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="light"
+          />
+          <Container component="main" maxWidth="xs">
+            <CssBaseline />
             <Box
-              component="form"
-              onSubmit={handleSubmit}
-              noValidate
-              sx={{ mt: 1 }}
+              sx={{
+                marginTop: 8,
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                padding: 5,
+              }}
             >
-              <TextField
-                margin="normal"
-                required
-                fullWidth
-                id="name"
-                label="User Name"
-                name="name"
-                autoComplete="name"
-                onChange={handleChange}
-                autoFocus
-              />
-              <TextField
-                onChange={handleChange}
-                margin="normal"
-                required
-                fullWidth
-                id="email"
-                label="Email Address"
-                name="email"
-                autoComplete="email"
-                autoFocus
-              />
-              <TextField
-                onChange={handleChange}
-                margin="normal"
-                required
-                fullWidth
-                name="password"
-                label="Password"
-                type="password"
-                id="password"
-                autoComplete="current-password"
-              />
-              <Button
-                type="submit"
-                // onClick={displayLoginNotification}
-                fullWidth
-                variant="contained"
-                sx={{ mt: 3, mb: 2 }}
+              <Avatar sx={{ m: 1, bgcolor: "#FFC300" }}>
+                <RestaurantIcon />
+              </Avatar>
+              <Typography component="h1" variant="h5">
+                Sign in
+              </Typography>
+              <Box
+                component="form"
+                onSubmit={handleSubmit}
+                noValidate
+                sx={{ mt: 1 }}
               >
-                Sign In
-              </Button>
-              <Link to="/login">
+                <TextField
+                  margin="normal"
+                  required
+                  fullWidth
+                  id="name"
+                  label="User Name"
+                  name="name"
+                  autoComplete="name"
+                  onChange={handleChange}
+                  autoFocus
+                />
+                <TextField
+                  onChange={handleChange}
+                  margin="normal"
+                  required
+                  fullWidth
+                  id="email"
+                  label="Email Address"
+                  name="email"
+                  autoComplete="email"
+                  autoFocus
+                />
+                <TextField
+                  onChange={handleChange}
+                  margin="normal"
+                  required
+                  fullWidth
+                  name="password"
+                  label="Password"
+                  type="password"
+                  id="password"
+                  autoComplete="current-password"
+                />
                 <Button
                   type="submit"
+                  // onClick={displayLoginNotification}
                   fullWidth
                   variant="contained"
                   sx={{ mt: 3, mb: 2 }}
                 >
-                  Already Login?
+                  Sign In
                 </Button>
-              </Link>
+                <Link to="/login">
+                  <Button
+                    type="submit"
+                    fullWidth
+                    variant="contained"
+                    sx={{ mt: 3, mb: 2 }}
+                  >
+                    Already Login?
+                  </Button>
+                </Link>
+              </Box>
             </Box>
-          </Box>
-          <Copyright sx={{ mt: 8, mb: 4 }} />
-        </Container>
-      </ThemeProvider>
+            <Copyright sx={{ mt: 8, mb: 4 }} />
+          </Container>
+        </ThemeProvider>
+      )}
     </>
   );
 }

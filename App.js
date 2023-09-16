@@ -7,7 +7,7 @@ import { Body } from "./src/component/Body.jsx";
 // import { Footer } from "./src/component/Footer.jsx";
 import Signup from "./src/component/Signup/Signup.jsx";
 import Login from "./src/component/Login/Login.jsx";
-// import { persistStore } from "redux-persist";
+import { persistStore } from "redux-persist";
 import Error from "./src/component/Error/Error.jsx";
 import { RouterProvider, createBrowserRouter, Outlet } from "react-router-dom";
 // import Contact from "./src/component/Contact";
@@ -40,7 +40,7 @@ const AppLayout = () => {
     <React.Fragment>
       <ToastContainer
         position="top-right"
-        autoClose={5000}
+        autoClose={2000}
         hideProgressBar={false}
         newestOnTop={false}
         closeOnClick
@@ -54,15 +54,15 @@ const AppLayout = () => {
       <ToastContainer />
 
       <Provider store={store}>
-        {/* <PersistGate loading={null} persistor={persistStore(store)}> */}
-
+        <PersistGate loading={null} persistor={persistStore(store)}>
+      
         <Header></Header>
         {/* <About></About>  if path is /about*/}
         {/* if path is / it is body */}
         {/* All children will go in outlet */}
         <Outlet> </Outlet>
         {/* <Footer></Footer> */}
-        {/* </PersistGate> */}
+        </PersistGate>
       </Provider>
       {/* </ToastContainer> */}
     </React.Fragment>

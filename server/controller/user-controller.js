@@ -19,35 +19,35 @@ const register = async (req, res) => {
       email,
       password: hash,
     });
-    var schema = new pass();
-    schema
-      .is()
-      .min(8) // Minimum length 8
-      .is()
-      .max(100)
-      .has()
-      .uppercase()
-      .has()
-      .lowercase()
-      .has()
-      .digits(1)
-      .has()
-      .not()
-      .spaces();
-    if (!emailValid.validate(email)) {
-      return res.status(401).send("Wrong Email Credentials");
-    }
-    if (!schema.validate(password)) {
-      return res
-        .status(401)
-        .send(
-          "Wrong Password Password must contain at least 1 uppercase lowercase digit special character and min of 8 length"
-        );
-    } 
-    else {
+    // var schema = new pass();
+    // schema
+    //   .is()
+    //   .min(8) // Minimum length 8
+    //   .is()
+    //   .max(100)
+    //   .has()
+    //   .uppercase()
+    //   .has()
+    //   .lowercase()
+    //   .has()
+    //   .digits(1)
+    //   .has()
+    //   .not()
+    //   .spaces();
+    // if (!emailValid.validate(email)) {
+    //   return res.status(401).send("Wrong Email Credentials");
+    // }
+    // if (!schema.validate(password)) {
+    //   return res
+    //     .status(401)
+    //     .send(
+    //       "Wrong Password Password must contain at least 1 uppercase lowercase digit special character and min of 8 length"
+    //     );
+    // } 
+    // else {
       await users.save();
       return res.status(201).send(users);
-    }
+    // }
   } catch (error) {}
 };
 const login = async (req, res) => {

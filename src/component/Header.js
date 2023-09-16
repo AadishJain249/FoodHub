@@ -4,7 +4,9 @@ import profile from "../../images/profile.png";
 import home from "../../images/home.png";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 import './Header.css'
+import users from "./utils/users";
 import { useNavigate } from "react-router-dom";
 import {
   InputBase,
@@ -26,13 +28,13 @@ export const Title = () => {
 };
 import { logout } from "./utils/authSlice";
 import { removeCart } from "./utils/cartSlice";
+import { useEffect, useState } from "react";
 export const NavComponent = () => {
   const theme = {
     width: "50px",
     height: "50px",
   };
-  const cart_items = useSelector((store) => store.cart.items);
-  
+  // const cart_items = useSelector((store) => store.cart.items);
   const dispatch = useDispatch();
   const Navigate = useNavigate();
   const {items} = useSelector((store) => store.cart);
@@ -47,7 +49,7 @@ export const NavComponent = () => {
     dispatch(removeCart())
   };
   const user=localStorage.getItem("user")
-  console.log(user);
+  // console.log(user);
   return (
     <div className="nav-items">
       <ul>
@@ -56,23 +58,24 @@ export const NavComponent = () => {
           <Link to="/cart">
 
             {" "}
-            <img style={theme} src={home}></img>
+            {user!=null?<img style={theme} src={home}></img>:""}
           </Link>
         </li>
           {" "}
         <li className="carts1">
-          <p className="carts">{items.length}</p>{" "}
-          <Link to="/cartItems">
+        {user!=null?<p className="carts">{items.length}</p>:""}
+          {user!=null?<Link to="/cartItems">
             <img style={theme} src={cart} />
-          </Link>
+          </Link>:""}
         </li>
         <li>
           {" "}
           <Link to="/">
-            <img style={theme} src={profile} />
+            {user==null?<img style={theme} src={profile} />:""}
           </Link>
         </li>
         <li>
+        {user!=null?
           <FormControl variant="standard" value={user ? user : ""}>
             <Select
               value={user ? user : ""}
@@ -91,9 +94,9 @@ export const NavComponent = () => {
               <MenuItem value={user? user : ""}>
                 <Typography>{user ? user : ""}</Typography>
               </MenuItem>
-              <MenuItem onClick={handleLogout}>Log Out</MenuItem>
+              {user!=null?<MenuItem onClick={handleLogout}>Log Out</MenuItem>:""}
             </Select>
-          </FormControl>
+          </FormControl>:""}
         </li>
 
       </ul>
@@ -101,17 +104,27 @@ export const NavComponent = () => {
   )
 }
 const Header = () => {
-  const getAuth=localStorage.getItem("IsLogin")
-  console.log(getAuth);
-  // const {flag}  = useSelector((store) => store.auth);
+//   const [auth,isAuth]=useState(localStorage.getItem("IsLogin"))
+//   useEffect(() => {
+//     const onStorage = () => {
+//         isAuth = localStorage.getItem('IsLogin');
+//     };
+
+//     window.addEventListener('storage', onStorage);
+
+//     return () => {
+//         window.removeEventListener('storage', onStorage);
+//     };
+// }, []);
+  // console.log(auth);
   return (
     <>
-      {getAuth ? (
+      (
         <div className="header">
           <Title />
           <NavComponent />
         </div>
-         ):""}
+         )
       
     </>
   );
