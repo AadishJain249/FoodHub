@@ -6,6 +6,7 @@ const user = require("../model/user");
 const emailValid = require("email-validator");
 const register = async (req, res) => {
   try {
+    console.log("aadish");
     const { name, email, password } = req.body;
     let exist;
     exist = await user.findOne({ email });

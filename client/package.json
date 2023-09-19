@@ -10,6 +10,7 @@
   "author": "Aadish Jain",
   "license": "ISC",
   "dependencies": {
+    "@babel/standalone": "^7.22.20",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@giphy/js-fetch-api": "^5.1.0",
@@ -18,7 +19,7 @@
     "@mui/material": "^5.14.3",
     "@reduxjs/toolkit": "^1.9.5",
     "axios": "^1.5.0",
-    "firebase": "^10.3.1",
+    "firebase": "^10.4.0",
     "lottie-react": "^2.4.0",
     "mdb-react-ui-kit": "^6.3.0",
     "parcel": "^2.9.2",
@@ -31,8 +32,8 @@
     "redux-persist": "^6.0.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.22.9",
-    "@babel/preset-react": "^7.22.5",
+    "@babel/core": "^7.22.20",
+    "@babel/preset-react": "^7.22.15",
     "babel-plugin-transform-remove-console": "^6.9.4",
     "buffer": "^6.0.3",
     "process": "^0.11.10"

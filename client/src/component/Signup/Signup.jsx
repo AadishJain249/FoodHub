@@ -47,13 +47,18 @@ function Signup() {
       [e.target.name]: e.target.value,
     }));
   };
+  let config = {
+    headers: {
+     'Content-Type':'application/json',
+    }
+  }
   const sendRequest = async () => {
     try {
-      const res = await axios.post("http://localhost:3000/api/user/add", {
+      const res = await axios.post("https://foodhubbackend-20e8.onrender.com/api/user/add", {
         name: input.name,
         email: input.email,
         password: input.password,
-      });
+      },config);
 
       const data = await res.data;
       dispatch(register(data));
@@ -74,7 +79,6 @@ function Signup() {
       localStorage.setItem("user", input.name);
     });
   };
-  console.log(user);
   const defaultTheme = createTheme();
   return (
     <>

@@ -50,7 +50,7 @@ function Login() {
   const sendRequest = async () => {
     try {
       const res = await axios.post(
-        "http://localhost:3000/api/user/login",
+        "https://foodhubbackend-20e8.onrender.com/api/user/login",
         {
           email: input.email,
           password: input.password,

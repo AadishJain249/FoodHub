@@ -5,8 +5,7 @@ const bodyParser = require('body-parser');
 app.use((req, res, next) => {
     res.append('Access-Control-Allow-Origin', ["*"]);
     res.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,PATCH');
-    res.append("Access-Control-Allow-Headers", "Content-Type,Authorization");
-    res.append("Access-Control-Allow-Credentials", "true");
+    res.append('Access-Control-Allow-Headers', 'Content-Type');
     next();
 });
 app.use(bodyParser());
