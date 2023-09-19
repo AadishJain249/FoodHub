@@ -8,6 +8,11 @@
   margin-right: 6px;
   font-size: 13px;
 }
+.cont1
+{
+  display: block;
+  justify-content: center;
+}
 .card-img2 {
   width :60px;
   height: 60px;

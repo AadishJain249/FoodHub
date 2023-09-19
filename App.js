@@ -54,7 +54,7 @@ const AppLayout = () => {
       <ToastContainer />
 
       <Provider store={store}>
-        <PersistGate loading={null} persistor={persistStore(store)}>
+        {/* <PersistGate loading={null} persistor={persistStore(store)}> */}
       
         <Header></Header>
         {/* <About></About>  if path is /about*/}
@@ -62,7 +62,7 @@ const AppLayout = () => {
         {/* All children will go in outlet */}
         <Outlet> </Outlet>
         {/* <Footer></Footer> */}
-        </PersistGate>
+        {/* </PersistGate> */}
       </Provider>
       {/* </ToastContainer> */}
     </React.Fragment>

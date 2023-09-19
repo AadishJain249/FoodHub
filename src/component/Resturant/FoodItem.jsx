@@ -23,7 +23,6 @@ const FoodItem = (props) => {
   };
   return (
     <>
-    
     <div className="cont1">
       <Card sx={{ backgroundColor:'#FFF0F5',width: 300, minHeight: 100, borderRadius: 4 ,":hover":{  boxShadow: 20,}}}>
          <CardActions>
@@ -44,15 +43,15 @@ const FoodItem = (props) => {
               color="text.secondary"
               marginTop="30"
             >
-              ₹{props.price}
+              ₹{props.price/100}
             </Typography>
             
           <Typography variant="body2" color="text.secondary">
           {props.itemAttribute?.vegClassifier === "NONVEG"?"Non Veg 🔺":"Veg  🌿 "}
           </Typography>
-          <Typography variant="body2" color="text.secondary">
+          {/* <Typography variant="body2" color="text.secondary">
             {props.description}
-          </Typography>
+          </Typography> */}
         </CardContent>
       </Card>
     </div>

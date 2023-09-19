@@ -52,7 +52,7 @@ function ResturantSubMenu(props) {
               color="text.secondary"
               marginTop="30"
             >
-              ₹{props?.info?.price}
+              ₹{props?.info?.price/100}
             </Typography>
             
           <Typography paddingBottom="20" variant="body2" color="text.secondary">
