@@ -11,8 +11,8 @@ app.use((req, res, next) => {
 app.use(cors({
     origin:["http://localhost:1234"]
 }));
-const mongoose=require('./db/mongo')
-const UserRouter=require('./routers/user-router')
+const mongoose=require('../db/mongo')
+const UserRouter=require('../routers/user-router')
 app.use(express.json())
 app.use('/api/user',UserRouter)
 app.get('/',(req,res)=>{
