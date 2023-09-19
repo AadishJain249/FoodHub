@@ -11,7 +11,7 @@ app.use((req, res, next) => {
 });
 app.use(bodyParser());
 app.use(cors({
-    origin:["http://localhost:3000"]
+    origin:["http://localhost:3000","https://foodhubbackend-20e8.onrender.com/"]
 }));
 const mongoose=require('./db/mongo')
 const UserRouter=require('./routers/user-router')
