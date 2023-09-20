@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
+// import Button from "@mui/material/Button";
+import Lottie from "lottie-react";
+import animation from '../../../images/animation_lmrhn56x.json'
+import './Login'
 import { useNavigate } from "react-router-dom";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
@@ -23,8 +26,10 @@ function Copyright(props) {
       {...props}
     >
       {"Copyright © "}
-      <Link color="inherit" href="https://mui.com/">
-        FoodHub
+      <Link style={{ color: 'inherit', textDecoration: 'inherit'}}href="https://mui.com/">
+        {/* <p className="food"> */}
+          FoodHub
+          {/* </p> */}
       </Link>{" "}
       {new Date().getFullYear()}
       {"."}
@@ -76,6 +81,8 @@ function Login() {
   const defaultTheme = createTheme();
   return (
     <>
+      <div className="container2">
+      <Lottie className="RegGif"animationData={animation}></Lottie>
       <ThemeProvider theme={defaultTheme}>
         <ToastContainer
           position="top-left"
@@ -134,20 +141,18 @@ function Login() {
                 id="password"
                 autoComplete="current-password"
               />
-              <Button
+              <button
                 type="submit"
-                // onClick={displayLoginNotification}
-                fullWidth
-                variant="contained"
-                sx={{ mt: 3, mb: 2 }}
+                className="btnstyle"
               >
                 Submit
-              </Button>
+              </button>
             </Box>
           </Box>
           <Copyright sx={{ mt: 8, mb: 4 }} />
         </Container>
       </ThemeProvider>
+      </div>
     </>
   );
 }

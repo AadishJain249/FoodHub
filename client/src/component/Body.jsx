@@ -4,6 +4,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import { filterData } from "../component/utils/helper";
 import useOnline from "./utils/useOnline";
+import './Body.css'
 import Connection from "../component/Connection/Connection.jsx";
 // import userContext from "../component/utils/useContext"
 export const Body = () => {

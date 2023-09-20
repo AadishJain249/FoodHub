@@ -2,6 +2,14 @@ import React, { useEffect, useState } from "react";
 import { Img_Link, swiggy_url } from "../../../content";
 import { useParams } from "react-router-dom";
 import "./Resturant.css";
+import {
+  Box,
+  Button,
+  TextField,
+  useMediaQuery,
+  Typography,
+  useTheme,
+} from "@mui/material";
 import ResturantMenu from "./ResturantMenu.jsx";
 import useResturant from "../utils/useResturant";
 // import Shimmer from "../../../Shimmer";
@@ -26,21 +34,20 @@ function Resturant() {
   const { id } = useParams();
   const { restaurant, menu } = useResturant(id);
   const [text, setText] = useState();
-  const [filter, setFilter] = useState([]);
+  const [filter, setFilter] = useState(restaurant);
+  console.log(menu);
   let rating = restaurant.totalRatings;
   let check = restaurant.totalRatings;
   if (rating > 999) {
     rating = rating / 1000;
   }
-  console.log(filter);
   return (
     <>
       <div className="cont">
         <div className="cen">
           <Card
             sx={{
-              width: 320,
-              backgroundColor: "#FFF0F5",
+              width:320,
               ":hover": { boxShadow: 20 },
             }}
           >
@@ -96,16 +103,17 @@ function Resturant() {
             Search
           </button>
         </div>
-        <h2 className="available">Available Items</h2>
+        <div className="box1">
         <div className="menu">
-            {filter.length!=0 && filter.cards.map(
+            {filter.length!=0  && (filter.cards.map(
               (e, index) => {
                 return (
                   <ResturantMenu key={index} {...e.card.card}></ResturantMenu>
                 );
               }
-            )}
+            ))}
         </div>
+      </div>
       </div>
     </>
   );

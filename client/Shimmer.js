@@ -1,5 +1,5 @@
 import { SHIMMER_RES_CARDS_COUNT } from './content';
-
+import './Shimmer.css'
 const CardShimmer = () => {
   return (
     <div className="shimmer-card">

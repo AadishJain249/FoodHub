@@ -1,10 +1,55 @@
-.carts1
-{
-    display: flex;
+.carts1 {
+  display: flex;
 }
-.carts
-{
-    font-weight: 900;
-    font-size: 18px;
-    padding-top: 15px;
+.carts {
+  font-weight: 900;
+  font-size: 18px;
+  padding-top: 15px;
+}
+
+.header {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  height: 70px;
+  background: #fff;
+}
+.nav-items > ul {
+  max-width: 400px;
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.nav-items > ul > li {
+  padding: 10px;
+  color: #001d3d;
+}
+
+.nav-items > ul > li:hover {
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 7px;
+}
+
+.logo {
+  margin-left: 10px;
+  width: 70px;
+}
+
+.cart,
+.profile,
+.home {
+  width: 50px;
+}
+.search-icon {
+  width: 20px;
+  height: 20px;
+}
+@media screen and (max-width: 500px) {
+ 
 }

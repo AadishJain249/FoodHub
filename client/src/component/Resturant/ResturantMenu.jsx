@@ -1,12 +1,17 @@
 import React from "react";
 import ResturantSubMenu from "./ResturantSubMenu";
+import './ResturantSubMenu.css'
 function ResturantMenu(props) {
   return (
     <>
-      {props?.itemCards && props?.itemCards.map((e,index)=>{
-      return <ResturantSubMenu key={index} {...e.card}></ResturantSubMenu>
-    })}
-    
+      <div className="container3">
+        {props?.itemCards &&
+          props?.itemCards.map((e, index) => {
+            return (
+              <ResturantSubMenu key={index} {...e.card}></ResturantSubMenu>
+            );
+          })}
+      </div>
     </>
   );
 }

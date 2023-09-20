@@ -10,8 +10,9 @@
 }
 .cont1
 {
-  display: block;
+  display: flex;
   justify-content: center;
+  align-items: center;
 }
 .card-img2 {
   width :60px;

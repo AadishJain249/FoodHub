@@ -1,14 +1,18 @@
 import React, { useState } from "react";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
+import Lottie from "lottie-react";
 import { useNavigate } from "react-router-dom";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
+import "./Signup.css";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import RestaurantIcon from "@mui/icons-material/Restaurant";
+import animation from '../../../images/animation_lmrhk1c0.json';
 import Typography from "@mui/material/Typography";
+// import { styled } from '@mui/material/styles';
 import { Link } from "react-router-dom";
 import Container from "@mui/material/Container";
 import { useDispatch } from "react-redux";
@@ -22,19 +26,24 @@ function Copyright(props) {
       variant="body2"
       color="text.secondary"
       align="center"
-      {...props}
+      // {...props}
     >
       {"Copyright © "}
-      <Link color="inherit" href="https://mui.com/">
-        FoodHub
+      <Link style={{ color: 'inherit', textDecoration: 'inherit',marginBottom:'10px'}} href="https://mui.com/">
+        {/* FoodHub */}
       </Link>{" "}
-      {new Date().getFullYear()}
-      {"."}
+      {/* {new Date().getFullYear()} */}
     </Typography>
   );
 }
+
 function Signup() {
   const nav = useNavigate();
+  // const styles = styled(TextField)({
+  //   '*.Mui-focused': {
+  //     borderColor: '#ffc300',
+  //     outline:'none',
+  //   }})
   const [input, setInput] = useState({
     name: "",
     email: "",
@@ -49,24 +58,27 @@ function Signup() {
   };
   let config = {
     headers: {
-     'Content-Type':'application/json',
-    }
-  }
+      "Content-Type": "application/json",
+    },
+  };
   const sendRequest = async () => {
     try {
-      const res = await axios.post("https://foodhubbackend-20e8.onrender.com/api/user/add", {
-        name: input.name,
-        email: input.email,
-        password: input.password,
-      },config);
-
+      const res = await axios.post(
+        "https://foodhubbackend-20e8.onrender.com/api/user/add",
+        {
+          name: input.name,
+          email: input.email,
+          password: input.password,
+        },
+        config
+      );
       const data = await res.data;
       dispatch(register(data));
-      // localStorage.setItem("IsLogin",true)
-      toast.success("Succesfully Login");
+      toast.success("Succesfully Registered");
       nav("/login");
       return data;
     } catch (err) {
+      console.log(err);
       toast.error(err.response.data);
       nav("/");
     }
@@ -75,13 +87,17 @@ function Signup() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    sendRequest().then().then(()=>{
-      localStorage.setItem("user", input.name);
-    });
+    sendRequest()
+      .then()
+      .then(() => {
+        localStorage.setItem("user", input.name);
+      });
   };
   const defaultTheme = createTheme();
   return (
     <>
+    <div className="container2">
+    <Lottie className="RegGif"animationData={animation}></Lottie>
       {user != null ? (
         <Body></Body>
       ) : (
@@ -98,11 +114,11 @@ function Signup() {
             pauseOnHover
             theme="light"
           />
-          <Container component="main" maxWidth="xs">
+          <Container component="main" maxWidth="sm">
             <CssBaseline />
             <Box
               sx={{
-                marginTop: 8,
+                marginBottom:10 ,
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
@@ -124,6 +140,13 @@ function Signup() {
                 <TextField
                   margin="normal"
                   required
+                  // style={styles}
+                  sx={{
+                    input: {
+                           color: "#ffffff",
+                           borderBottom: "1px solid #FFC300",
+                           },
+                     }} 
                   fullWidth
                   id="name"
                   label="User Name"
@@ -138,6 +161,12 @@ function Signup() {
                   required
                   fullWidth
                   id="email"
+                  sx={{
+                    input: {
+                           color: "#ffffff",
+                           borderBottom: "1px solid #FFC300",
+                           },
+                     }} 
                   label="Email Address"
                   name="email"
                   autoComplete="email"
@@ -148,37 +177,38 @@ function Signup() {
                   margin="normal"
                   required
                   fullWidth
+                  sx={{
+                    input: {
+                           color: "#ffffff",
+                           borderBottom: "1px solid #FFC300",
+                           },
+                     }} 
                   name="password"
                   label="Password"
                   type="password"
                   id="password"
                   autoComplete="current-password"
                 />
-                <Button
+                <button
                   type="submit"
+                  className="btnstyle"
                   // onClick={displayLoginNotification}
                   fullWidth
                   variant="contained"
                   sx={{ mt: 3, mb: 2 }}
                 >
-                  Sign In
-                </Button>
+                  Register
+                </button>
                 <Link to="/login">
-                  <Button
-                    type="submit"
-                    fullWidth
-                    variant="contained"
-                    sx={{ mt: 3, mb: 2 }}
-                  >
-                    Already Login?
-                  </Button>
+                  <button className="btnstyle1">Already Login?</button>
                 </Link>
               </Box>
             </Box>
-            <Copyright sx={{ mt: 8, mb: 4 }} />
+            {/* <Copyright sx={{ mt: 8, mb: 4 }} /> */}
           </Container>
         </ThemeProvider>
       )}
+      </div>
     </>
   );
 }

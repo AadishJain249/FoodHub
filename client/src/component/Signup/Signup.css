@@ -4,3 +4,60 @@ body
     /* background-size: cover; */
     /* background-repeat: no-repeat; */
 }
+.food
+{
+    text-decoration: none;
+}
+.btnstyle
+{
+    color: white;
+    font-size: 20px;
+    border: 2px solid #e6b000;
+    border-radius: 20px;
+    font-weight: 900;
+    background-color: #ffc300;
+    width: 316px;
+    height: 36.5px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+.container2
+{
+    display: flex;
+    cursor: pointer;
+    justify-content: center;
+    margin-top: 20px;
+    align-items: center;
+}
+.RegGif{
+    width: 500px;
+    height: 500px;
+}
+.btnstyle1
+{
+    margin-top: 20px;
+    color: white;
+    font-size: 20px;
+    border: none;
+    border-radius: 20px;
+    font-weight: 900;
+    background-color: #ffc300;
+    border: 2px solid #e6b000;
+    cursor: pointer;
+    width: 316px;
+    height: 36.5px;
+}
+@media only screen and (max-width: 600px) {
+    .container2
+    {
+        display: block;
+        padding-top: 100px;
+        justify-content: center;
+        align-items: center;
+    }
+    .RegGif
+    {
+        width: auto;
+        height: 50px;
+    }
+}

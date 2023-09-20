@@ -15,7 +15,7 @@ const RestaurantCard = (props) => {
   };
   return (
     <div className="main">
-      <Card sx={{ backgroundColor:'#F5F5F5',minWidth: 200, minHeight: 150, borderRadius: 4,":hover":{  boxShadow: 20,}}}>
+      <Card sx={{ backgroundColor:'#F5F5F5',minWidth: 280, minHeight: 250, borderRadius: 4,":hover":{  boxShadow: 20}}}>
       <img className="card-img" src={Img_Link + props.cloudinaryImageId} alt={name} />
         <CardContent>
           <Typography gutterBottom variant="p" component="div">

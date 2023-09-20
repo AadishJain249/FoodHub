@@ -13,51 +13,70 @@ function ResturantSubMenu(props) {
     dispatch(addItem(item));
   };
   const themeStyle = {
-    width: "110px",
-    marginLeft:"10px",
+    width: "94px",
+    height:"34px",
+    marginLeft: "5px",
     background: "#F5F5F5",
-    padding:"5px", 
-    color: "black",
-    borderRadius: "20px",
-    fontWeight: "bolder",
+    color: "green",
+    borderRadius: "8px",
+    fontWeight: "900",
   };
   return (
     <div className="cont1">
-      <Card sx={{ backgroundColor:'#F5F5F5', width: 300, minHeight: 100, borderRadius: 4 ,":hover":{  boxShadow: 20,}}}>
-        
-     
-        {/* <CardMedia
-          sx={{ height: 200 }}
-          image={Img_Link + props.info.imageId}
-          title="green iguana"
-        /> */}
-        
-         <CardActions>
-         <img className="card-img1" src={Img_Link + props?.info?.imageId} alt={name} />
+      <Card
+        sx={{
+          // backgroundColor: "#F5F5F5",
+          width: 800,
+          height: 140,
+          marginBottom:4,
+          borderRadius: 4,
+          ":hover": { boxShadow: 20 },
+        }}
+      >
+        <CardContent>
+          <div className="body_card">
+            <Typography 
+              fontSize="16px"
+              fontWeight="900"
+              gutterBottom component="div">
+              {props?.info?.name}
+            </Typography>
+
+            <Typography
+              // fontWeight="900"
+              variant="body2"
+              
+              fontSize="12px"
+              color="text.secondary"
+              marginTop="30"
+            >
+              ₹{props?.info?.price / 100}
+            </Typography>
+
+            <Typography
+              paddingBottom="20"
+              fontSize="12px"
+              variant="body2"
+              color="text.secondary"
+            >
+              {props?.info?.itemAttribute?.vegClassifier === "NONVEG"
+                ? "Non Veg 🔺"
+                : "Veg  🌿 "}
+            </Typography>
+          </div>
+          <div className="action_card">
+            <img
+              className="card-img1"
+              src={Img_Link + props?.info?.imageId}
+              alt={name}
+            />
             <button
               style={themeStyle}
               onClick={() => addItemInCart(props?.info)}
             >
-              Add To Cart
+              Add
             </button>
-            </CardActions>
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
-            {props?.info?.name}
-          </Typography>
-         
-            <Typography
-              // fontWeight="900"
-              variant="body2"
-              color="text.secondary"
-              marginTop="30"
-            >
-              ₹{props?.info?.price/100}
-            </Typography>
-            
-          <Typography paddingBottom="20" variant="body2" color="text.secondary">
-            {props?.info?.itemAttribute?.vegClassifier === "NONVEG"?"Non Veg 🔺":"Veg  🌿 "}
-          </Typography>
+          </div>
         </CardContent>
 
         {/* <hr align="center" width="100%"></hr> */}
