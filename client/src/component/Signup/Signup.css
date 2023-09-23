@@ -16,7 +16,7 @@ body
     border-radius: 20px;
     font-weight: 900;
     background-color: #ffc300;
-    width: 316px;
+    width: 500px;
     height: 36.5px;
     margin-top: 20px;
     cursor: pointer;
@@ -44,7 +44,7 @@ body
     background-color: #ffc300;
     border: 2px solid #e6b000;
     cursor: pointer;
-    width: 316px;
+    width: 500px;
     height: 36.5px;
 }
 @media only screen and (max-width: 600px) {

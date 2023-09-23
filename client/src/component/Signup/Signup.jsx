@@ -143,7 +143,7 @@ function Signup() {
                   // style={styles}
                   sx={{
                     input: {
-                           color: "#ffffff",
+                           color: "black",
                            borderBottom: "1px solid #FFC300",
                            },
                      }} 
@@ -163,7 +163,7 @@ function Signup() {
                   id="email"
                   sx={{
                     input: {
-                           color: "#ffffff",
+                           color: "black",
                            borderBottom: "1px solid #FFC300",
                            },
                      }} 
@@ -179,7 +179,7 @@ function Signup() {
                   fullWidth
                   sx={{
                     input: {
-                           color: "#ffffff",
+                           color: "black",
                            borderBottom: "1px solid #FFC300",
                            },
                      }} 
