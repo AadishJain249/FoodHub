@@ -38,12 +38,6 @@ function Copyright(props) {
 }
 
 function Signup() {
-  const nav = useNavigate();
-  // const styles = styled(TextField)({
-  //   '*.Mui-focused': {
-  //     borderColor: '#ffc300',
-  //     outline:'none',
-  //   }})
   const [input, setInput] = useState({
     name: "",
     email: "",
@@ -96,11 +90,11 @@ function Signup() {
   const defaultTheme = createTheme();
   return (
     <>
-    <div className="container2">
-    <Lottie className="RegGif"animationData={animation}></Lottie>
-      {user != null ? (
-        <Body></Body>
-      ) : (
+    {user != null ? 
+        <Body></Body> : 
+      
+        <div className="container2">
+        <Lottie className="RegGif"animationData={animation}></Lottie>
         <ThemeProvider theme={defaultTheme}>
           <ToastContainer
             position="top-left"
@@ -207,10 +201,10 @@ function Signup() {
             {/* <Copyright sx={{ mt: 8, mb: 4 }} /> */}
           </Container>
         </ThemeProvider>
-      )}
+      
       </div>
-    </>
-  );
-}
+      }
+      </>
+)}
 
 export default Signup;

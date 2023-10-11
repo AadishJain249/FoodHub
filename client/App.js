@@ -19,6 +19,8 @@ import store from "./src/component/utils/store";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import CartItem from "./src/component/CartItem/CartItem.jsx";
+import About from "./src/component/About";
+import Profile from "./src/component/Profile";
 // import { PersistGate } from "redux-persist/integration/react";
 // now we have d2 files insta mart and my bundle file
 // import Resturant from "./src/component/Resturant/Resturant";
@@ -56,7 +58,7 @@ const AppLayout = () => {
       <Provider store={store}>
         {/* <PersistGate loading={null} persistor={persistStore(store)}> */}
       
-        <Header></Header>
+        {/* <Header></Header> */}
         {/* <About></About>  if path is /about*/}
         {/* if path is / it is body */}
         {/* All children will go in outlet */}
@@ -93,11 +95,15 @@ const appRouter = createBrowserRouter([
         path: "/login",
         element: <Login></Login>,
       },
-      // {
-      //   path: "/contact",
-      //   element: <Contact></Contact>, // i want my about page to have footer and header also we can make by making
-      //   // its children
-      // },
+      {
+        path: "/about",
+        element:<About></About>,
+        children:[{
+          path:'profile',
+          element:<Profile></Profile>
+        }
+        ]
+      },
       {
         path: "/resturant/:id",
         element: <Resturant></Resturant>,
