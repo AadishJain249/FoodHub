@@ -58,7 +58,7 @@ const AppLayout = () => {
       <Provider store={store}>
         {/* <PersistGate loading={null} persistor={persistStore(store)}> */}
       
-        {/* <Header></Header> */}
+        <Header></Header>
         {/* <About></About>  if path is /about*/}
         {/* if path is / it is body */}
         {/* All children will go in outlet */}
