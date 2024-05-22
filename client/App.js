@@ -13,7 +13,6 @@ import store from "./src/component/utils/store";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import CartItem from "./src/component/CartItem/CartItem.jsx";
-import Profile from "./src/component/Profile";
 const AppLayout = () => {
   return (
     <React.Fragment>
