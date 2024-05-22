@@ -28,8 +28,7 @@ export const Title = () => {
 import { logout } from "./utils/authSlice";
 import { removeCart } from "./utils/cartSlice";
 export const NavComponent = () => {
-  const theme = {
-    ...theme,
+  let theme = {
     width: "50px", 
     height: "50px",  };
   const [auth, isAuth] = useState(localStorage.getItem("IsLogin"));
@@ -42,7 +41,6 @@ export const NavComponent = () => {
       window.removeEventListener("storage", onStorage);
     };
   }, []);
-  console.log(auth);
   const dispatch = useDispatch();
   const Navigate = useNavigate();
   const { items } = useSelector((store) => store.cart);
