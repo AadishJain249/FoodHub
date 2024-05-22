@@ -4,7 +4,7 @@
   "description": "Practice react",
   "scripts": {
     "start": "parcel index.html",
-    "build": "parcel build index.html",
+    "build": "parcel build --no-optimize index.html",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Aadish Jain",
