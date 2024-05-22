@@ -1,18 +1,13 @@
-import React, { useEffect, useState } from "react";
-import { Img_Link, swiggy_url } from "../../../content";
+import React from "react";
+import { Img_Link } from "../../../content";
 import { useParams } from "react-router-dom";
 import "./Resturant.css";
+import { useState } from "react";
 import {
-  Box,
-  Button,
-  TextField,
-  useMediaQuery,
   Typography,
-  useTheme,
 } from "@mui/material";
 import ResturantMenu from "./ResturantMenu.jsx";
 import useResturant from "../utils/useResturant";
-// import Shimmer from "../../../Shimmer";
 import AspectRatio from "@mui/joy/AspectRatio";
 import Card from "@mui/joy/Card";
 import CardContent from "@mui/joy/CardContent";
@@ -35,7 +30,6 @@ function Resturant() {
   const { restaurant, menu } = useResturant(id);
   const [text, setText] = useState();
   const [filter, setFilter] = useState(restaurant);
-  console.log(menu);
   let rating = restaurant.totalRatings;
   let check = restaurant.totalRatings;
   if (rating > 999) {
@@ -85,16 +79,15 @@ function Resturant() {
         <div className="search-container">
           <label for="exampleFormControlSelect1">Select Category</label>
           <select
-            onChange={(e) => setText(e.target.value)}
-            style={{ width: "150px" }}
-            class="form-control"
-            id="exampleFormControlSelect1"
-          >
-            <option value="VEG">Veg</option>
-            <option value="NONVEG">Non Veg And Veg Both</option>
-          </select>
+    onChange={(e) => setText(e.target.value)}
+    class="select-style"
+    id="exampleFormControlSelect1"
+  >
+    <option value="VEG">Veg</option>
+    <option value="NONVEG">Non Veg And Veg Both</option>
+  </select>
           <button
-            className="search-btn"
+            className="search-btn1"
             style={{ backgroundColor: "#FFF0F5", border: "1px solid #FFF0F5" }}
             onClick={() => {
               searchData(text, menu);
@@ -105,10 +98,10 @@ function Resturant() {
         </div>
         <div className="box1">
         <div className="menu">
-            {filter.length!=0  && (filter.cards.map(
+            {filter.length!=0  && (filter.map(
               (e, index) => {
                 return (
-                  <ResturantMenu key={index} {...e.card.card}></ResturantMenu>
+                  <ResturantMenu key={index} {...e}></ResturantMenu>
                 );
               }
             ))}

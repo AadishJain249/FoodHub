@@ -5,15 +5,11 @@ export const filterData = (text, Allrestaurant) => {
   return resFilterData;
 };
 export const filterType = (text, res) => {
-  const data = res?.cards?.filter((props, index) => {
-    props?.card?.card?.itemCards?.filter((props1) => 
-    (
-      props1?.card?.info?.itemAttribute?.vegClassifier==="VEG"
-    )
-    );
-  });
-  console.log(data);
-  return data;
-};
+  const newData=[];
+  res?.filter((props) => {
+      if(props.itemAttribute?.vegClassifier=="VEG")
+          newData.push(props);
+    });
+  return newData;};
 
 export const users=localStorage.getItem("IsLogin")

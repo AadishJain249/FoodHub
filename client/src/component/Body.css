@@ -6,6 +6,9 @@
   margin: auto;
   text-align: center;
 }
+html{
+  background-image: url('./assets/papers.co-sc40-sub-glow-light-skin-food-blur-25-wallpaper.jpg');
+}
 .search-input {
   height: 30px;
   flex-basis: 350px;

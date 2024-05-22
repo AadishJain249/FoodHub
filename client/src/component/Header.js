@@ -1,5 +1,8 @@
 import logo from "../../images/logo-main.png";
 import cart from "../../images/cart.png";
+import online from "../component/assets/online.png";
+import offline from "../component/assets/download.png";
+
 import profile from "../../images/profile.png";
 import home from "../../images/home.png";
 import { useSelector } from "react-redux";
@@ -13,7 +16,7 @@ import {
   MenuItem,
   FormControl,
 } from "@mui/material";
-
+import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 export const ImgComponent = ({ item, itemname }) => {
   return <img className={itemname} alt={itemname} src={item} />;
@@ -29,16 +32,26 @@ export const NavComponent = () => {
     width: "50px",
     height: "50px",
   };
+  const [auth, isAuth] = useState(localStorage.getItem("IsLogin"));
+  useEffect(() => {
+    const onStorage = () => {
+      isAuth = localStorage.getItem("IsLogin");
+    };
+    window.addEventListener("storage", onStorage);
+    return () => {
+      window.removeEventListener("storage", onStorage);
+    };
+  }, []);
+  console.log(auth);
   const dispatch = useDispatch();
   const Navigate = useNavigate();
   const { items } = useSelector((store) => store.cart);
   const { users } = useSelector((store) => store.auth);
-  console.log(users);
   const handleLogout = () => {
     dispatch(logout());
     Navigate("/login");
-    localStorage.removeItem("IsLogin", false);
-    localStorage.removeItem("user", "");
+    localStorage.setItem("IsLogin", false);
+    localStorage.setItem("user", "");
     dispatch(removeCart());
   };
   const user = localStorage.getItem("IsLogin");
@@ -61,13 +74,19 @@ export const NavComponent = () => {
             ""
           )}
         </li>
-        <li>
-          {" "}
-          <Link to="/">
-            {user == null ? <img style={theme} src={profile} /> : ""}
-          </Link>
+        <li className="carts1">
+          {auth == "true" ? (
+            <img style={theme} src={online} />
+          ) : (
+            <img style={theme} src={offline} />
+          )}
         </li>
-        <li className="name" >
+        <li>
+          {/* <Link to="/">
+            <img style={theme} src={profile} />
+          </Link> */}
+        </li>
+        <li className="name">
           {user != null ? (
             <FormControl variant="standard" value={user ? user : ""}>
               <Select
@@ -103,19 +122,6 @@ export const NavComponent = () => {
   );
 };
 const Header = () => {
-  //   const [auth,isAuth]=useState(localStorage.getItem("IsLogin"))
-  //   useEffect(() => {
-  //     const onStorage = () => {
-  //         isAuth = localStorage.getItem('IsLogin');
-  //     };
-
-  //     window.addEventListener('storage', onStorage);
-
-  //     return () => {
-  //         window.removeEventListener('storage', onStorage);
-  //     };
-  // }, []);
-  // console.log(auth);
   return (
     <>
       (

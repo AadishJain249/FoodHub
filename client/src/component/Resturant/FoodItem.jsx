@@ -1,11 +1,9 @@
 import { Img_Link } from "../../../content";
-import { FaRegStopCircle, FaRegCaretSquareUp } from "react-icons/fa";
-import "./ResturantSubMenu.css"
-import { useDispatch, useSelector } from "react-redux";
+import "./ResturantMenu.css"
+import { useDispatch } from "react-redux";
 import { removeItem } from "../utils/cartSlice";
 import { Typography } from "@mui/joy";
 import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 const FoodItem = (props) => {
   const dispatch=useDispatch()
@@ -26,7 +24,6 @@ const FoodItem = (props) => {
    <div className="cont1">
       <Card
         sx={{
-          // backgroundColor: "#F5F5F5",
           width: 800,
           height: 140,
           marginBottom:4,
@@ -44,9 +41,7 @@ const FoodItem = (props) => {
             </Typography>
 
             <Typography
-              // fontWeight="900"
               variant="body2"
-              
               fontSize="12px"
               color="text.secondary"
               marginTop="30"
@@ -79,8 +74,6 @@ const FoodItem = (props) => {
             </button>
           </div>
         </CardContent>
-
-        {/* <hr align="center" width="100%"></hr> */}
       </Card>
     </div>
     </>

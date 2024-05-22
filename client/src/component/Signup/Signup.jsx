@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
 import Lottie from "lottie-react";
 import { useNavigate } from "react-router-dom";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -12,7 +11,6 @@ import "react-toastify/dist/ReactToastify.css";
 import RestaurantIcon from "@mui/icons-material/Restaurant";
 import animation from '../../../images/animation_lmrhk1c0.json';
 import Typography from "@mui/material/Typography";
-// import { styled } from '@mui/material/styles';
 import { Link } from "react-router-dom";
 import Container from "@mui/material/Container";
 import { useDispatch } from "react-redux";
@@ -20,22 +18,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import axios from "axios";
 import { register } from "../utils/authSlice";
 import { Body } from "../Body";
-function Copyright(props) {
-  return (
-    <Typography
-      variant="body2"
-      color="text.secondary"
-      align="center"
-      // {...props}
-    >
-      {"Copyright © "}
-      <Link style={{ color: 'inherit', textDecoration: 'inherit',marginBottom:'10px'}} href="https://mui.com/">
-        {/* FoodHub */}
-      </Link>{" "}
-      {/* {new Date().getFullYear()} */}
-    </Typography>
-  );
-}
+
 
 function Signup() {
   const [input, setInput] = useState({
@@ -43,6 +26,7 @@ function Signup() {
     email: "",
     password: "",
   });
+  const nav=useNavigate();
   const dispatch = useDispatch();
   const handleChange = (e) => {
     setInput((prev) => ({
@@ -67,6 +51,7 @@ function Signup() {
         config
       );
       const data = await res.data;
+      console.log(data)
       dispatch(register(data));
       toast.success("Succesfully Registered");
       nav("/login");
@@ -74,7 +59,7 @@ function Signup() {
     } catch (err) {
       console.log(err);
       toast.error(err.response.data);
-      nav("/");
+      nav("/signup");
     }
   };
   let user = localStorage.getItem("IsLogin");
@@ -88,7 +73,7 @@ function Signup() {
       });
   };
   const defaultTheme = createTheme();
-  return (
+   return (
     <>
     {user != null ? 
         <Body></Body> : 
@@ -134,7 +119,6 @@ function Signup() {
                 <TextField
                   margin="normal"
                   required
-                  // style={styles}
                   sx={{
                     input: {
                            color: "black",
@@ -186,7 +170,6 @@ function Signup() {
                 <button
                   type="submit"
                   className="btnstyle"
-                  // onClick={displayLoginNotification}
                   fullWidth
                   variant="contained"
                   sx={{ mt: 3, mb: 2 }}
@@ -198,7 +181,6 @@ function Signup() {
                 </Link>
               </Box>
             </Box>
-            {/* <Copyright sx={{ mt: 8, mb: 4 }} /> */}
           </Container>
         </ThemeProvider>
       

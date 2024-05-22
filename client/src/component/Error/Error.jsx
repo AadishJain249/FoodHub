@@ -4,7 +4,6 @@ import { useRouteError } from "react-router-dom";
 function Error() {
   // gives us error in router
   const error = useRouteError();
-  console.log(error);
   return (
     <React.Fragment>
       <div className="bg-purple">

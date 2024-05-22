@@ -9,4 +9,101 @@
   justify-content: center;
   align-items: center;
   /* margin-right: 30px; */
+}@keyframes pulse-hover {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Define the animation for click */
+@keyframes pulse-click {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Apply the hover animation to the button */
+.search-btn1 {
+  animation-duration: 0.5s; /* Adjust duration as needed */
+  transition: transform 0.3s ease; /* Transition for smooth hover animation */
+}
+
+.search-btn1:hover {
+  animation-name: pulse-hover;
+}
+
+/* Additional styling for the button */
+.search-btn1 {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: black;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.search-btn1:hover {
+  background-color: #0056b3;
+}
+
+/* Apply the click animation to the button */
+.search-btn1.clicked {
+  animation-name: pulse-click;
+}
+.select-style {
+  padding: 8px 30px 8px 10px;
+  width: 150px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  background-image: linear-gradient(45deg, transparent 50%, #ccc 50%), linear-gradient(135deg, #ccc 50%, transparent 50%);
+  background-position: calc(100% - 15px) calc(1em + 2px), calc(100% - 10px) calc(1em + 2px);
+  background-size: 5px 5px, 5px 5px;
+  background-repeat: no-repeat;
+  appearance: none;
+  font-family: Arial, sans-serif; /* Change font family */
+  font-size: 14px; /* Change font size */
+}
+
+/* Additional styling for the select element when focused */
+.select-style:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* Styling for the options */
+.select-style option {
+  padding: 8px 10px;
+  font-family: Arial, sans-serif; /* Change font family */
+  font-size: 14px; /* Change font size */
+}
+
+/* Styling for the select element's container */
+.select-container {
+  position: relative;
+  display: inline-block;
+}
+
+/* Styling for the arrow icon */
+.select-arrow {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: #666;
 }

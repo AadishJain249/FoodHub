@@ -4,18 +4,14 @@ import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import { filterData } from "../component/utils/helper";
 import useOnline from "./utils/useOnline";
-import './Body.css'
+import "./Body.css";
+import dummyData from '../data/dummy.js'
 import Connection from "../component/Connection/Connection.jsx";
-// import userContext from "../component/utils/useContext"
 export const Body = () => {
-  // const user=useContext(userContext)
-  const swiggy_url =
-    "https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.7040592&lng=77.10249019999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING";
   const [text, setText] = useState("");
   const [search, setSearch] = useState([]);
   const [error, setError] = useState("");
   const [restaurant, setResturant] = useState([]);
-  // const {user,setUser}=useContext(userContext)
   const offline = useOnline();
   function searchData(text, restaurant) {
     const res = filterData(text, restaurant);
@@ -33,22 +29,25 @@ export const Body = () => {
     getData();
   }, []);
   async function getData() {
-    const response = await fetch(swiggy_url);
-    const json = await response.json();
-    console.log(json);
-    async function checkJsonData(jsonData) {
-      for (let i = 0; i < jsonData?.data?.cards.length; i++) {
-        let checkData =
-          json?.data?.cards[i]?.card?.card?.gridElements?.infoWithStyle
-            ?.restaurants;
-        if (checkData !== undefined) {
-          return checkData;
+    try {
+      const response=dummyData
+      const json = response;
+      async function checkJsonData(jsonData) {
+        for (let i = 0; i < jsonData?.data?.cards.length; i++) {
+          let checkData =
+            json?.data?.cards[i]?.card?.card?.gridElements?.infoWithStyle
+              ?.restaurants;
+          if (checkData !== undefined) {
+            return checkData;
+          }
         }
       }
+      const data = await checkJsonData(json);
+      setResturant(data);
+      setSearch(data);
+    } catch (error) {
+      console.log(error.message);
     }
-    const data = await checkJsonData(json);
-    setResturant(data);
-    setSearch(data);
   }
   if (!offline) {
     return (
