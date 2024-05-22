@@ -29,9 +29,9 @@ import { logout } from "./utils/authSlice";
 import { removeCart } from "./utils/cartSlice";
 export const NavComponent = () => {
   const theme = {
-    width: "50px",
-    height: "50px",
-  };
+    ...theme,
+    width: "50px", 
+    height: "50px",  };
   const [auth, isAuth] = useState(localStorage.getItem("IsLogin"));
   useEffect(() => {
     const onStorage = () => {
